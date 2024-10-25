@@ -8,7 +8,7 @@
 #SBATCH --gres=gpu:1        # 4 gpus per node out of 4
 #SBATCH --mem=100000          # memory per node out of 494000MB (481GB)
 #SBATCH --job-name=ocdcub
-#SBATCH -o /leonardo_work/IscrC_Fed-GCD/hyzheng/PHE_release/log/cub_test.log
+#SBATCH -o /leonardo_work/IscrC_Fed-GCD/hyzheng/PHE_release/log/scars_test.log
 
 module load cuda/12.1
 source /leonardo/home/userexternal/hzheng00/miniconda3/bin/activate fedgcd
@@ -64,9 +64,9 @@ then
 fi
 
 ft=protopformer
-data_set=CD_CUB2011U
-prototype_num=1000
-labeled_nums=100
+data_set=CD_Car
+prototype_num=980
+labeled_nums=98
 data_path=/db/pszzz/xxx
 
 
@@ -75,7 +75,7 @@ python main.py \
     --data_set=$data_set \
     --data_path=$data_path \
     --input_size=$input_size \
-    --output_dir=$output_dir/$data_set/"cub_test_seed(1027)" \
+    --output_dir=$output_dir/$data_set/"scars_test_seed(1027)" \
     --batch_size=$batch_size \
     --seed=1027 \
     --opt=$opt \
