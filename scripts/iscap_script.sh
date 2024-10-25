@@ -8,7 +8,7 @@
 #SBATCH --gres=gpu:1        # 4 gpus per node out of 4
 #SBATCH --mem=100000          # memory per node out of 494000MB (481GB)
 #SBATCH --job-name=ocdcub
-#SBATCH -o /leonardo_work/IscrC_Fed-GCD/hyzheng/PHE_release/log/test.log
+#SBATCH -o /leonardo_work/IscrC_Fed-GCD/hyzheng/PHE_release/log/test_scars.log
 
 module load cuda/12.1
 source /leonardo/home/userexternal/hzheng00/miniconda3/bin/activate fedgcd
@@ -16,7 +16,7 @@ source /leonardo/home/userexternal/hzheng00/miniconda3/bin/activate fedgcd
 CUDA_VISIBLE_DEVICES=0
 
 # Training Config
-data_set=CD_CUB2011U
+data_set=CD_Car
 use_global=True
 global_proto_per_class=10
 prototype_dim=768

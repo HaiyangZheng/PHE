@@ -200,7 +200,7 @@ def evaluate(test_loader_unlabelled, model, args, centers, dis_max):
             min_distance = min(distances)
             min_index = distances.index(min_distance)
 
-            if min_distance <= 1:
+            if min_distance <= radius:
                 preds1.append(min_index)
                 found = True
 
