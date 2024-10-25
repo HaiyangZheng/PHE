@@ -192,7 +192,7 @@ def get_outlog(args):
         logfile_dir = os.path.join(args.output_dir, "train-logs")
     ckpt_dir = os.path.join(args.output_dir, "checkpoints")
     tb_dir = os.path.join(args.output_dir, "tf-logs")
-    tb_log_dir = os.path.join(tb_dir, args.model+ "_" + args.data_set)
+    tb_log_dir = os.path.join(tb_dir, args.data_set)
     os.makedirs(logfile_dir, exist_ok=True)
     os.makedirs(ckpt_dir, exist_ok=True)
     os.makedirs(tb_dir, exist_ok=True)
@@ -200,7 +200,7 @@ def get_outlog(args):
     # tb_writer = SummaryWriter(
     #     log_dir=os.path.join(
     #         tb_dir,
-    #         args.model+ "_" + args.data_set
+    #         args.data_set
     #     ),
     #     flush_secs=1
     # )
@@ -210,7 +210,7 @@ def get_outlog(args):
         name=None,
         logger_fp=os.path.join(
             logfile_dir,
-            args.model+ "_" + args.data_set + ".log"
+            args.data_set + ".log"
         )
     )
 
@@ -318,7 +318,6 @@ def main(args):
         assert args.mixup == 0.0
         logger.info("Mixup is not enabled")
 
-    # logger.info(f"Creating model: {args.model}")
     model = phe_model.construct_PPNet_dino(img_size=args.img_size,
                                 prototype_shape=args.prototype_shape,
                                 num_classes=args.nb_classes,
