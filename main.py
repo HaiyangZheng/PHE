@@ -326,7 +326,7 @@ def main(args):
                                 prototype_activation_function=args.prototype_activation_function,
                                 add_on_layers_type=args.add_on_layers_type,
                                 mask_theta=args.mask_theta,
-                                pretrain_path=args.pretrain_pat,
+                                pretrain_path=args.pretrain_path,
                                 hash_code_length=args.hash_code_length,)
     #### print require grad
     for name, param in model.named_parameters():
