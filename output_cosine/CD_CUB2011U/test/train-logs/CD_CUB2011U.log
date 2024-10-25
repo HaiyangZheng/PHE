@@ -1,0 +1,339 @@
+2024-10-25 10:32:34,949 - main - INFO - Start running with args: 
+Namespace(batch_size=128, distillw=0.5, enable_smoothing=False, enable_mixup=False, w_dis_token=False, img_size=224, prototype_shape=[1000, 768, 1, 1], prototype_activation_function='log', add_on_layers_type='regular', baseline_path=None, use_global=True, global_proto_per_class=10, features_lr=0.0001, add_on_layers_lr=0.001, prototype_vectors_lr=0.001, joint_lr_step_size=5, coefs_crs_ent=1, coefs_clst=0.8, coefs_sep=-0.08, coefs_l1=0.0001, epochs=200, save_ep_freq=400, drop=0.0, drop_path=0.1, model_ema=True, model_ema_decay=0.99996, model_ema_force_cpu=False, opt='adamw', opt_eps=1e-08, opt_betas=None, clip_grad=None, momentum=0.9, weight_decay=0.05, sched='cosine', lr=0.0005, lr_noise=None, lr_noise_pct=0.67, lr_noise_std=1.0, warmup_lr=0.0001, min_lr=1e-05, decay_epochs=10.0, warmup_epochs=5, cooldown_epochs=10, patience_epochs=10, decay_rate=0.1, color_jitter=0.4, aa='rand-m9-mstd0.5-inc1', smoothing=0.0, train_interpolation='bicubic', reprob=0.25, remode='pixel', recount=1, resplit=False, mixup=0.0, cutmix=1.0, cutmix_minmax=None, mixup_prob=1.0, mixup_switch_prob=0.5, mixup_mode='batch', prop_train_labels=0.5, mask_theta=0.1, labeled_nums=100, data_set='CD_CUB2011U', inat_category='name', output_dir='output_cosine//CD_CUB2011U/test', device='cuda', seed=1027, resume='', start_epoch=0, eval=False, dist_eval=False, num_workers=10, pin_mem=True, world_size=1, dist_url='env://', hash_code_length=12, prototype_dim=768, data_root='/leonardo_work/IscrC_Fed-GCD/GCD_datasets/CUB', pretrain_path='/leonardo_work/IscrC_Fed-GCD/GCD_datasets/dino/dino_vitbase16_pretrain.pth', distributed=False)
+2024-10-25 10:32:34,950 - main - INFO - Distributed: False
+2024-10-25 10:32:39,484 - main - INFO - Dataset num_classes: 100
+2024-10-25 10:32:39,484 - main - INFO - train 1498 test: 2884
+2024-10-25 10:32:39,484 - main - INFO - test_dataset_unlabelled: 4496
+2024-10-25 10:32:39,486 - main - INFO - Label smoothing is not enabled, smoothing rate: 0.0
+2024-10-25 10:32:39,486 - main - INFO - Mixup is not enabled
+2024-10-25 10:32:43,596 - main - INFO - number of params: 14745880
+2024-10-25 10:32:43,597 - main - INFO - Start training for 200 epochs
+2024-10-25 10:32:43,598 - train_one_epoch - INFO - Start train one epoch
+2024-10-25 10:33:03,113 - log_every - INFO - Epoch: [0]  [ 0/12]  eta: 0:03:54  lr: 0.000100  loss_protop: 4.9740 (4.9740)  loss_feature: 4.5962 (4.5962)  loss_sep: 0.0000 (0.0000)  loss_quan: 0.6045 (0.6045)  time: 19.5113  data: 13.0724  max mem: 3428
+2024-10-25 10:33:04,346 - log_every - INFO - Epoch: [0]  [11/12]  eta: 0:00:01  lr: 0.000100  loss_protop: 4.9726 (4.9809)  loss_feature: 4.2878 (4.3265)  loss_sep: 0.0000 (0.0070)  loss_quan: 0.4839 (0.5004)  time: 1.7286  data: 1.0894  max mem: 3597
+2024-10-25 10:33:04,563 - log_every - INFO - Epoch: [0] Total time: 0:00:20 (1.7471 s / it)
+2024-10-25 10:33:04,567 - evaluate - INFO - Start validation
+2024-10-25 10:33:19,874 - evaluate - INFO - labeled_nums: 100
+2024-10-25 10:33:21,013 - evaluate - INFO - labeled_nums: 100
+2024-10-25 10:33:21,934 - evaluate - INFO - labeled_nums: 100
+2024-10-25 10:33:22,883 - evaluate - INFO - labeled_nums: 100
+2024-10-25 10:33:23,788 - evaluate - INFO - labeled_nums: 100
+2024-10-25 10:33:24,675 - evaluate - INFO - labeled_nums: 100
+2024-10-25 10:33:25,620 - evaluate - INFO - labeled_nums: 100
+2024-10-25 10:33:26,542 - evaluate - INFO - labeled_nums: 100
+2024-10-25 10:33:35,114 - evaluate - INFO - labeled_nums: 100
+2024-10-25 10:33:35,753 - evaluate - INFO - labeled_nums: 100
+2024-10-25 10:33:36,391 - evaluate - INFO - labeled_nums: 100
+2024-10-25 10:33:36,997 - evaluate - INFO - labeled_nums: 100
+2024-10-25 10:33:37,638 - evaluate - INFO - labeled_nums: 100
+2024-10-25 10:33:38,260 - evaluate - INFO - labeled_nums: 100
+2024-10-25 10:33:38,882 - evaluate - INFO - labeled_nums: 100
+2024-10-25 10:33:39,440 - evaluate - INFO - labeled_nums: 100
+2024-10-25 10:33:41,841 - evaluate - INFO - labeled_nums: 100
+2024-10-25 10:33:42,167 - evaluate - INFO - labeled_nums: 100
+2024-10-25 10:33:43,645 - evaluate - INFO - test len(list(set(preds1))): 302 len(preds): 4496
+2024-10-25 10:33:43,645 - evaluate - INFO - Evaluate: all_acc: 0.137 old_acc: 0.107 new_acc: 0.152
+2024-10-25 10:33:43,646 - main - INFO - Averaged stats:
+2024-10-25 10:33:43,646 - main - INFO - {'lr': 0.00010000000000000003, 'loss_protop': 4.980872273445129, 'loss_feature': 4.326489408810933, 'loss_sep': 0.00704101564285035, 'loss_quan': 0.5004069010416666}
+2024-10-25 10:33:43,647 - train_one_epoch - INFO - Start train one epoch
+2024-10-25 10:33:53,865 - log_every - INFO - Epoch: [1]  [ 0/12]  eta: 0:02:02  lr: 0.000100  loss_protop: 4.7551 (4.7551)  loss_feature: 3.9496 (3.9496)  loss_sep: 0.0608 (0.0608)  loss_quan: 0.3916 (0.3916)  time: 10.2175  data: 10.0110  max mem: 3597
+2024-10-25 10:33:55,877 - log_every - INFO - Epoch: [1]  [11/12]  eta: 0:00:01  lr: 0.000100  loss_protop: 4.9315 (4.9452)  loss_feature: 3.8763 (3.8834)  loss_sep: 0.0937 (0.0969)  loss_quan: 0.3567 (0.3630)  time: 1.0190  data: 0.8762  max mem: 3597
+2024-10-25 10:33:56,334 - log_every - INFO - Epoch: [1] Total time: 0:00:12 (1.0572 s / it)
+2024-10-25 10:33:56,334 - evaluate - INFO - Start validation
+2024-10-25 10:34:11,037 - evaluate - INFO - labeled_nums: 100
+2024-10-25 10:34:12,195 - evaluate - INFO - labeled_nums: 100
+2024-10-25 10:34:13,117 - evaluate - INFO - labeled_nums: 100
+2024-10-25 10:34:14,043 - evaluate - INFO - labeled_nums: 100
+2024-10-25 10:34:14,973 - evaluate - INFO - labeled_nums: 100
+2024-10-25 10:34:15,921 - evaluate - INFO - labeled_nums: 100
+2024-10-25 10:34:16,869 - evaluate - INFO - labeled_nums: 100
+2024-10-25 10:34:17,802 - evaluate - INFO - labeled_nums: 100
+2024-10-25 10:34:26,223 - evaluate - INFO - labeled_nums: 100
+2024-10-25 10:34:26,924 - evaluate - INFO - labeled_nums: 100
+2024-10-25 10:34:27,579 - evaluate - INFO - labeled_nums: 100
+2024-10-25 10:34:28,232 - evaluate - INFO - labeled_nums: 100
+2024-10-25 10:34:28,872 - evaluate - INFO - labeled_nums: 100
+2024-10-25 10:34:29,491 - evaluate - INFO - labeled_nums: 100
+2024-10-25 10:34:30,097 - evaluate - INFO - labeled_nums: 100
+2024-10-25 10:34:30,694 - evaluate - INFO - labeled_nums: 100
+2024-10-25 10:34:31,253 - evaluate - INFO - labeled_nums: 100
+2024-10-25 10:34:31,580 - evaluate - INFO - labeled_nums: 100
+2024-10-25 10:34:32,946 - evaluate - INFO - test len(list(set(preds1))): 272 len(preds): 4496
+2024-10-25 10:34:32,946 - evaluate - INFO - Evaluate: all_acc: 0.172 old_acc: 0.139 new_acc: 0.188
+2024-10-25 10:34:32,947 - main - INFO - Averaged stats:
+2024-10-25 10:34:32,947 - main - INFO - {'lr': 0.00010000000000000003, 'loss_protop': 4.945249438285828, 'loss_feature': 3.8833719889322915, 'loss_sep': 0.09689778462052345, 'loss_quan': 0.3630167643229167}
+2024-10-25 10:34:32,948 - train_one_epoch - INFO - Start train one epoch
+2024-10-25 10:34:42,819 - log_every - INFO - Epoch: [2]  [ 0/12]  eta: 0:01:58  lr: 0.000100  loss_protop: 4.9559 (4.9559)  loss_feature: 3.8354 (3.8354)  loss_sep: 0.0699 (0.0699)  loss_quan: 0.3450 (0.3450)  time: 9.8705  data: 9.6373  max mem: 3597
+2024-10-25 10:34:45,189 - log_every - INFO - Epoch: [2]  [11/12]  eta: 0:00:01  lr: 0.000100  loss_protop: 4.9030 (4.8977)  loss_feature: 3.8014 (3.8057)  loss_sep: 0.0466 (0.0459)  loss_quan: 0.3345 (0.3346)  time: 1.0200  data: 0.8654  max mem: 3597
+2024-10-25 10:34:45,642 - log_every - INFO - Epoch: [2] Total time: 0:00:12 (1.0578 s / it)
+2024-10-25 10:34:45,642 - evaluate - INFO - Start validation
+2024-10-25 10:35:00,385 - evaluate - INFO - labeled_nums: 100
+2024-10-25 10:35:01,431 - evaluate - INFO - labeled_nums: 100
+2024-10-25 10:35:02,357 - evaluate - INFO - labeled_nums: 100
+2024-10-25 10:35:03,284 - evaluate - INFO - labeled_nums: 100
+2024-10-25 10:35:04,206 - evaluate - INFO - labeled_nums: 100
+2024-10-25 10:35:05,146 - evaluate - INFO - labeled_nums: 100
+2024-10-25 10:35:06,052 - evaluate - INFO - labeled_nums: 100
+2024-10-25 10:35:07,005 - evaluate - INFO - labeled_nums: 100
+2024-10-25 10:35:15,545 - evaluate - INFO - labeled_nums: 100
+2024-10-25 10:35:16,225 - evaluate - INFO - labeled_nums: 100
+2024-10-25 10:35:16,886 - evaluate - INFO - labeled_nums: 100
+2024-10-25 10:35:17,531 - evaluate - INFO - labeled_nums: 100
+2024-10-25 10:35:18,185 - evaluate - INFO - labeled_nums: 100
+2024-10-25 10:35:18,815 - evaluate - INFO - labeled_nums: 100
+2024-10-25 10:35:19,429 - evaluate - INFO - labeled_nums: 100
+2024-10-25 10:35:20,029 - evaluate - INFO - labeled_nums: 100
+2024-10-25 10:35:20,590 - evaluate - INFO - labeled_nums: 100
+2024-10-25 10:35:20,916 - evaluate - INFO - labeled_nums: 100
+2024-10-25 10:35:22,353 - evaluate - INFO - test len(list(set(preds1))): 296 len(preds): 4496
+2024-10-25 10:35:22,353 - evaluate - INFO - Evaluate: all_acc: 0.181 old_acc: 0.151 new_acc: 0.195
+2024-10-25 10:35:22,354 - main - INFO - Averaged stats:
+2024-10-25 10:35:22,354 - main - INFO - {'lr': 0.00010000000000000003, 'loss_protop': 4.897718588511149, 'loss_feature': 3.8057292302449546, 'loss_sep': 0.04590169216195742, 'loss_quan': 0.3345947265625}
+2024-10-25 10:35:22,355 - train_one_epoch - INFO - Start train one epoch
+2024-10-25 10:35:32,777 - log_every - INFO - Epoch: [3]  [ 0/12]  eta: 0:02:05  lr: 0.000100  loss_protop: 5.1119 (5.1119)  loss_feature: 3.7690 (3.7690)  loss_sep: 0.0334 (0.0334)  loss_quan: 0.3250 (0.3250)  time: 10.4208  data: 10.2525  max mem: 3597
+2024-10-25 10:35:34,616 - log_every - INFO - Epoch: [3]  [11/12]  eta: 0:00:01  lr: 0.000100  loss_protop: 4.8959 (4.9097)  loss_feature: 3.7608 (3.7623)  loss_sep: 0.0305 (0.0355)  loss_quan: 0.3232 (0.3231)  time: 1.0216  data: 0.8784  max mem: 3597
+2024-10-25 10:35:35,077 - log_every - INFO - Epoch: [3] Total time: 0:00:12 (1.0601 s / it)
+2024-10-25 10:35:35,078 - evaluate - INFO - Start validation
+2024-10-25 10:35:49,792 - evaluate - INFO - labeled_nums: 100
+2024-10-25 10:35:50,993 - evaluate - INFO - labeled_nums: 100
+2024-10-25 10:35:51,909 - evaluate - INFO - labeled_nums: 100
+2024-10-25 10:35:52,834 - evaluate - INFO - labeled_nums: 100
+2024-10-25 10:35:53,752 - evaluate - INFO - labeled_nums: 100
+2024-10-25 10:35:54,675 - evaluate - INFO - labeled_nums: 100
+2024-10-25 10:35:55,624 - evaluate - INFO - labeled_nums: 100
+2024-10-25 10:35:56,566 - evaluate - INFO - labeled_nums: 100
+2024-10-25 10:36:04,949 - evaluate - INFO - labeled_nums: 100
+2024-10-25 10:36:05,634 - evaluate - INFO - labeled_nums: 100
+2024-10-25 10:36:06,317 - evaluate - INFO - labeled_nums: 100
+2024-10-25 10:36:06,949 - evaluate - INFO - labeled_nums: 100
+2024-10-25 10:36:07,593 - evaluate - INFO - labeled_nums: 100
+2024-10-25 10:36:08,217 - evaluate - INFO - labeled_nums: 100
+2024-10-25 10:36:08,822 - evaluate - INFO - labeled_nums: 100
+2024-10-25 10:36:09,429 - evaluate - INFO - labeled_nums: 100
+2024-10-25 10:36:09,989 - evaluate - INFO - labeled_nums: 100
+2024-10-25 10:36:10,315 - evaluate - INFO - labeled_nums: 100
+2024-10-25 10:36:11,827 - evaluate - INFO - test len(list(set(preds1))): 327 len(preds): 4496
+2024-10-25 10:36:11,827 - evaluate - INFO - Evaluate: all_acc: 0.193 old_acc: 0.164 new_acc: 0.207
+2024-10-25 10:36:11,828 - main - INFO - Averaged stats:
+2024-10-25 10:36:11,829 - main - INFO - {'lr': 0.00010000000000000003, 'loss_protop': 4.909732619921367, 'loss_feature': 3.7623232205708823, 'loss_sep': 0.03548502534007033, 'loss_quan': 0.3230997721354167}
+2024-10-25 10:36:11,829 - train_one_epoch - INFO - Start train one epoch
+2024-10-25 10:36:21,562 - log_every - INFO - Epoch: [4]  [ 0/12]  eta: 0:01:56  lr: 0.000100  loss_protop: 4.8880 (4.8880)  loss_feature: 3.7467 (3.7467)  loss_sep: 0.0135 (0.0135)  loss_quan: 0.3228 (0.3228)  time: 9.7325  data: 9.4504  max mem: 3597
+2024-10-25 10:36:24,043 - log_every - INFO - Epoch: [4]  [11/12]  eta: 0:00:01  lr: 0.000100  loss_protop: 4.8428 (4.8445)  loss_feature: 3.7406 (3.7393)  loss_sep: 0.0139 (0.0142)  loss_quan: 0.3252 (0.3256)  time: 1.0177  data: 0.8595  max mem: 3597
+2024-10-25 10:36:24,498 - log_every - INFO - Epoch: [4] Total time: 0:00:12 (1.0557 s / it)
+2024-10-25 10:36:24,498 - evaluate - INFO - Start validation
+2024-10-25 10:36:39,201 - evaluate - INFO - labeled_nums: 100
+2024-10-25 10:36:40,308 - evaluate - INFO - labeled_nums: 100
+2024-10-25 10:36:41,247 - evaluate - INFO - labeled_nums: 100
+2024-10-25 10:36:42,179 - evaluate - INFO - labeled_nums: 100
+2024-10-25 10:36:43,130 - evaluate - INFO - labeled_nums: 100
+2024-10-25 10:36:44,063 - evaluate - INFO - labeled_nums: 100
+2024-10-25 10:36:45,000 - evaluate - INFO - labeled_nums: 100
+2024-10-25 10:36:45,927 - evaluate - INFO - labeled_nums: 100
+2024-10-25 10:36:54,621 - evaluate - INFO - labeled_nums: 100
+2024-10-25 10:36:55,293 - evaluate - INFO - labeled_nums: 100
+2024-10-25 10:36:55,946 - evaluate - INFO - labeled_nums: 100
+2024-10-25 10:36:56,591 - evaluate - INFO - labeled_nums: 100
+2024-10-25 10:36:57,239 - evaluate - INFO - labeled_nums: 100
+2024-10-25 10:36:57,838 - evaluate - INFO - labeled_nums: 100
+2024-10-25 10:36:58,445 - evaluate - INFO - labeled_nums: 100
+2024-10-25 10:36:59,043 - evaluate - INFO - labeled_nums: 100
+2024-10-25 10:36:59,603 - evaluate - INFO - labeled_nums: 100
+2024-10-25 10:36:59,930 - evaluate - INFO - labeled_nums: 100
+2024-10-25 10:37:01,417 - evaluate - INFO - test len(list(set(preds1))): 346 len(preds): 4496
+2024-10-25 10:37:01,417 - evaluate - INFO - Evaluate: all_acc: 0.191 old_acc: 0.172 new_acc: 0.200
+2024-10-25 10:37:01,418 - main - INFO - Averaged stats:
+2024-10-25 10:37:01,418 - main - INFO - {'lr': 0.00010000000000000003, 'loss_protop': 4.844500501950582, 'loss_feature': 3.7392836610476174, 'loss_sep': 0.014202473723950485, 'loss_quan': 0.3256429036458333}
+2024-10-25 10:37:01,419 - train_one_epoch - INFO - Start train one epoch
+2024-10-25 10:37:11,661 - log_every - INFO - Epoch: [5]  [ 0/12]  eta: 0:02:02  lr: 0.000100  loss_protop: 4.8638 (4.8638)  loss_feature: 3.7171 (3.7171)  loss_sep: 0.0106 (0.0106)  loss_quan: 0.3237 (0.3237)  time: 10.2419  data: 10.0370  max mem: 3597
+2024-10-25 10:37:13,682 - log_every - INFO - Epoch: [5]  [11/12]  eta: 0:00:01  lr: 0.000100  loss_protop: 4.8351 (4.8540)  loss_feature: 3.7264 (3.7252)  loss_sep: 0.0139 (0.0141)  loss_quan: 0.3193 (0.3198)  time: 1.0218  data: 0.8765  max mem: 3597
+2024-10-25 10:37:14,139 - log_every - INFO - Epoch: [5] Total time: 0:00:12 (1.0600 s / it)
+2024-10-25 10:37:14,140 - evaluate - INFO - Start validation
+2024-10-25 10:37:28,818 - evaluate - INFO - labeled_nums: 100
+2024-10-25 10:37:29,900 - evaluate - INFO - labeled_nums: 100
+2024-10-25 10:37:30,847 - evaluate - INFO - labeled_nums: 100
+2024-10-25 10:37:31,776 - evaluate - INFO - labeled_nums: 100
+2024-10-25 10:37:32,716 - evaluate - INFO - labeled_nums: 100
+2024-10-25 10:37:33,652 - evaluate - INFO - labeled_nums: 100
+2024-10-25 10:37:34,575 - evaluate - INFO - labeled_nums: 100
+2024-10-25 10:37:35,529 - evaluate - INFO - labeled_nums: 100
+2024-10-25 10:37:43,985 - evaluate - INFO - labeled_nums: 100
+2024-10-25 10:37:44,678 - evaluate - INFO - labeled_nums: 100
+2024-10-25 10:37:45,327 - evaluate - INFO - labeled_nums: 100
+2024-10-25 10:37:45,963 - evaluate - INFO - labeled_nums: 100
+2024-10-25 10:37:46,600 - evaluate - INFO - labeled_nums: 100
+2024-10-25 10:37:47,224 - evaluate - INFO - labeled_nums: 100
+2024-10-25 10:37:47,821 - evaluate - INFO - labeled_nums: 100
+2024-10-25 10:37:48,419 - evaluate - INFO - labeled_nums: 100
+2024-10-25 10:37:48,979 - evaluate - INFO - labeled_nums: 100
+2024-10-25 10:37:49,305 - evaluate - INFO - labeled_nums: 100
+2024-10-25 10:37:50,886 - evaluate - INFO - test len(list(set(preds1))): 388 len(preds): 4496
+2024-10-25 10:37:50,887 - evaluate - INFO - Evaluate: all_acc: 0.207 old_acc: 0.222 new_acc: 0.200
+2024-10-25 10:37:50,887 - main - INFO - Averaged stats:
+2024-10-25 10:37:50,888 - main - INFO - {'lr': 0.00010000000000000003, 'loss_protop': 4.853973189989726, 'loss_feature': 3.7251852552096048, 'loss_sep': 0.014147135118643442, 'loss_quan': 0.3198038736979167}
+2024-10-25 10:37:50,888 - train_one_epoch - INFO - Start train one epoch
+2024-10-25 10:38:00,983 - log_every - INFO - Epoch: [6]  [ 0/12]  eta: 0:02:01  lr: 0.000100  loss_protop: 4.7458 (4.7458)  loss_feature: 3.7156 (3.7156)  loss_sep: 0.0126 (0.0126)  loss_quan: 0.3145 (0.3145)  time: 10.0943  data: 9.9053  max mem: 3597
+2024-10-25 10:38:03,163 - log_every - INFO - Epoch: [6]  [11/12]  eta: 0:00:01  lr: 0.000100  loss_protop: 4.7751 (4.7970)  loss_feature: 3.7125 (3.7130)  loss_sep: 0.0110 (0.0141)  loss_quan: 0.3076 (0.3076)  time: 1.0227  data: 0.8750  max mem: 3597
+2024-10-25 10:38:03,616 - log_every - INFO - Epoch: [6] Total time: 0:00:12 (1.0607 s / it)
+2024-10-25 10:38:03,617 - evaluate - INFO - Start validation
+2024-10-25 10:38:18,431 - evaluate - INFO - labeled_nums: 100
+2024-10-25 10:38:19,509 - evaluate - INFO - labeled_nums: 100
+2024-10-25 10:38:20,440 - evaluate - INFO - labeled_nums: 100
+2024-10-25 10:38:21,345 - evaluate - INFO - labeled_nums: 100
+2024-10-25 10:38:22,287 - evaluate - INFO - labeled_nums: 100
+2024-10-25 10:38:23,229 - evaluate - INFO - labeled_nums: 100
+2024-10-25 10:38:24,165 - evaluate - INFO - labeled_nums: 100
+2024-10-25 10:38:25,105 - evaluate - INFO - labeled_nums: 100
+2024-10-25 10:38:33,561 - evaluate - INFO - labeled_nums: 100
+2024-10-25 10:38:34,235 - evaluate - INFO - labeled_nums: 100
+2024-10-25 10:38:34,885 - evaluate - INFO - labeled_nums: 100
+2024-10-25 10:38:35,529 - evaluate - INFO - labeled_nums: 100
+2024-10-25 10:38:36,179 - evaluate - INFO - labeled_nums: 100
+2024-10-25 10:38:36,788 - evaluate - INFO - labeled_nums: 100
+2024-10-25 10:38:37,399 - evaluate - INFO - labeled_nums: 100
+2024-10-25 10:38:38,005 - evaluate - INFO - labeled_nums: 100
+2024-10-25 10:38:38,564 - evaluate - INFO - labeled_nums: 100
+2024-10-25 10:38:38,891 - evaluate - INFO - labeled_nums: 100
+2024-10-25 10:38:40,463 - evaluate - INFO - test len(list(set(preds1))): 363 len(preds): 4496
+2024-10-25 10:38:40,463 - evaluate - INFO - Evaluate: all_acc: 0.221 old_acc: 0.233 new_acc: 0.215
+2024-10-25 10:38:40,464 - main - INFO - Averaged stats:
+2024-10-25 10:38:40,465 - main - INFO - {'lr': 9.986128001799077e-05, 'loss_protop': 4.796998659769694, 'loss_feature': 3.7130042711893716, 'loss_sep': 0.014069009999123713, 'loss_quan': 0.30755615234375}
+2024-10-25 10:38:40,465 - train_one_epoch - INFO - Start train one epoch
+2024-10-25 10:38:50,659 - log_every - INFO - Epoch: [7]  [ 0/12]  eta: 0:02:02  lr: 0.000100  loss_protop: 4.8569 (4.8569)  loss_feature: 3.6960 (3.6960)  loss_sep: 0.0058 (0.0058)  loss_quan: 0.3018 (0.3018)  time: 10.1931  data: 10.0221  max mem: 3597
+2024-10-25 10:38:52,693 - log_every - INFO - Epoch: [7]  [11/12]  eta: 0:00:01  lr: 0.000100  loss_protop: 4.7962 (4.7983)  loss_feature: 3.7022 (3.7017)  loss_sep: 0.0079 (0.0082)  loss_quan: 0.2949 (0.2967)  time: 1.0189  data: 0.8733  max mem: 3597
+2024-10-25 10:38:53,148 - log_every - INFO - Epoch: [7] Total time: 0:00:12 (1.0569 s / it)
+2024-10-25 10:38:53,149 - evaluate - INFO - Start validation
+2024-10-25 10:39:07,878 - evaluate - INFO - labeled_nums: 100
+2024-10-25 10:39:08,970 - evaluate - INFO - labeled_nums: 100
+2024-10-25 10:39:09,938 - evaluate - INFO - labeled_nums: 100
+2024-10-25 10:39:10,842 - evaluate - INFO - labeled_nums: 100
+2024-10-25 10:39:11,771 - evaluate - INFO - labeled_nums: 100
+2024-10-25 10:39:12,666 - evaluate - INFO - labeled_nums: 100
+2024-10-25 10:39:13,623 - evaluate - INFO - labeled_nums: 100
+2024-10-25 10:39:14,533 - evaluate - INFO - labeled_nums: 100
+2024-10-25 10:39:22,965 - evaluate - INFO - labeled_nums: 100
+2024-10-25 10:39:23,658 - evaluate - INFO - labeled_nums: 100
+2024-10-25 10:39:24,318 - evaluate - INFO - labeled_nums: 100
+2024-10-25 10:39:24,970 - evaluate - INFO - labeled_nums: 100
+2024-10-25 10:39:25,631 - evaluate - INFO - labeled_nums: 100
+2024-10-25 10:39:26,243 - evaluate - INFO - labeled_nums: 100
+2024-10-25 10:39:26,845 - evaluate - INFO - labeled_nums: 100
+2024-10-25 10:39:27,445 - evaluate - INFO - labeled_nums: 100
+2024-10-25 10:39:28,005 - evaluate - INFO - labeled_nums: 100
+2024-10-25 10:39:28,332 - evaluate - INFO - labeled_nums: 100
+2024-10-25 10:39:29,884 - evaluate - INFO - test len(list(set(preds1))): 396 len(preds): 4496
+2024-10-25 10:39:29,884 - evaluate - INFO - Evaluate: all_acc: 0.226 old_acc: 0.241 new_acc: 0.218
+2024-10-25 10:39:29,885 - main - INFO - Averaged stats:
+2024-10-25 10:39:29,885 - main - INFO - {'lr': 9.98002884071386e-05, 'loss_protop': 4.798344413439433, 'loss_feature': 3.70174507300059, 'loss_sep': 0.00817382795503363, 'loss_quan': 0.2967122395833333}
+2024-10-25 10:39:29,886 - train_one_epoch - INFO - Start train one epoch
+2024-10-25 10:39:39,788 - log_every - INFO - Epoch: [8]  [ 0/12]  eta: 0:01:58  lr: 0.000100  loss_protop: 4.8078 (4.8078)  loss_feature: 3.6872 (3.6872)  loss_sep: 0.0083 (0.0083)  loss_quan: 0.2935 (0.2935)  time: 9.9007  data: 9.6382  max mem: 3597
+2024-10-25 10:39:42,218 - log_every - INFO - Epoch: [8]  [11/12]  eta: 0:00:01  lr: 0.000100  loss_protop: 4.8078 (4.7928)  loss_feature: 3.6922 (3.6919)  loss_sep: 0.0060 (0.0077)  loss_quan: 0.2920 (0.2910)  time: 1.0276  data: 0.8665  max mem: 3597
+2024-10-25 10:39:42,671 - log_every - INFO - Epoch: [8] Total time: 0:00:12 (1.0654 s / it)
+2024-10-25 10:39:42,672 - evaluate - INFO - Start validation
+2024-10-25 10:39:57,461 - evaluate - INFO - labeled_nums: 100
+2024-10-25 10:39:58,503 - evaluate - INFO - labeled_nums: 100
+2024-10-25 10:39:59,437 - evaluate - INFO - labeled_nums: 100
+2024-10-25 10:40:00,349 - evaluate - INFO - labeled_nums: 100
+2024-10-25 10:40:01,281 - evaluate - INFO - labeled_nums: 100
+2024-10-25 10:40:02,224 - evaluate - INFO - labeled_nums: 100
+2024-10-25 10:40:03,142 - evaluate - INFO - labeled_nums: 100
+2024-10-25 10:40:04,063 - evaluate - INFO - labeled_nums: 100
+2024-10-25 10:40:12,591 - evaluate - INFO - labeled_nums: 100
+2024-10-25 10:40:13,255 - evaluate - INFO - labeled_nums: 100
+2024-10-25 10:40:13,918 - evaluate - INFO - labeled_nums: 100
+2024-10-25 10:40:14,560 - evaluate - INFO - labeled_nums: 100
+2024-10-25 10:40:15,217 - evaluate - INFO - labeled_nums: 100
+2024-10-25 10:40:15,812 - evaluate - INFO - labeled_nums: 100
+2024-10-25 10:40:16,418 - evaluate - INFO - labeled_nums: 100
+2024-10-25 10:40:17,025 - evaluate - INFO - labeled_nums: 100
+2024-10-25 10:40:17,585 - evaluate - INFO - labeled_nums: 100
+2024-10-25 10:40:17,912 - evaluate - INFO - labeled_nums: 100
+2024-10-25 10:40:19,502 - evaluate - INFO - test len(list(set(preds1))): 394 len(preds): 4496
+2024-10-25 10:40:19,502 - evaluate - INFO - Evaluate: all_acc: 0.238 old_acc: 0.287 new_acc: 0.214
+2024-10-25 10:40:19,503 - main - INFO - Averaged stats:
+2024-10-25 10:40:19,503 - main - INFO - {'lr': 9.97282429954831e-05, 'loss_protop': 4.792824149131775, 'loss_feature': 3.691898008187612, 'loss_sep': 0.007737630046904087, 'loss_quan': 0.291015625}
+2024-10-25 10:40:19,504 - train_one_epoch - INFO - Start train one epoch
+2024-10-25 10:40:29,663 - log_every - INFO - Epoch: [9]  [ 0/12]  eta: 0:02:01  lr: 0.000100  loss_protop: 4.8105 (4.8105)  loss_feature: 3.6854 (3.6854)  loss_sep: 0.0028 (0.0028)  loss_quan: 0.2842 (0.2842)  time: 10.1580  data: 10.0040  max mem: 3597
+2024-10-25 10:40:31,748 - log_every - INFO - Epoch: [9]  [11/12]  eta: 0:00:01  lr: 0.000100  loss_protop: 4.7712 (4.7621)  loss_feature: 3.6855 (3.6861)  loss_sep: 0.0048 (0.0054)  loss_quan: 0.2788 (0.2788)  time: 1.0202  data: 0.8745  max mem: 3597
+2024-10-25 10:40:32,204 - log_every - INFO - Epoch: [9] Total time: 0:00:12 (1.0583 s / it)
+2024-10-25 10:40:32,204 - evaluate - INFO - Start validation
+2024-10-25 10:40:46,820 - evaluate - INFO - labeled_nums: 100
+2024-10-25 10:40:48,006 - evaluate - INFO - labeled_nums: 100
+2024-10-25 10:40:48,946 - evaluate - INFO - labeled_nums: 100
+2024-10-25 10:40:49,879 - evaluate - INFO - labeled_nums: 100
+2024-10-25 10:40:50,824 - evaluate - INFO - labeled_nums: 100
+2024-10-25 10:40:51,757 - evaluate - INFO - labeled_nums: 100
+2024-10-25 10:40:52,663 - evaluate - INFO - labeled_nums: 100
+2024-10-25 10:40:53,574 - evaluate - INFO - labeled_nums: 100
+2024-10-25 10:41:01,981 - evaluate - INFO - labeled_nums: 100
+2024-10-25 10:41:02,675 - evaluate - INFO - labeled_nums: 100
+2024-10-25 10:41:03,321 - evaluate - INFO - labeled_nums: 100
+2024-10-25 10:41:03,966 - evaluate - INFO - labeled_nums: 100
+2024-10-25 10:41:04,623 - evaluate - INFO - labeled_nums: 100
+2024-10-25 10:41:05,265 - evaluate - INFO - labeled_nums: 100
+2024-10-25 10:41:05,872 - evaluate - INFO - labeled_nums: 100
+2024-10-25 10:41:06,470 - evaluate - INFO - labeled_nums: 100
+2024-10-25 10:41:07,030 - evaluate - INFO - labeled_nums: 100
+2024-10-25 10:41:07,357 - evaluate - INFO - labeled_nums: 100
+2024-10-25 10:41:08,943 - evaluate - INFO - test len(list(set(preds1))): 400 len(preds): 4496
+2024-10-25 10:41:08,943 - evaluate - INFO - Evaluate: all_acc: 0.241 old_acc: 0.288 new_acc: 0.217
+2024-10-25 10:41:08,944 - main - INFO - Averaged stats:
+2024-10-25 10:41:08,944 - main - INFO - {'lr': 9.964516155915147e-05, 'loss_protop': 4.7620521783828735, 'loss_feature': 3.6860674818356833, 'loss_sep': 0.005445963412057608, 'loss_quan': 0.27880859375}
+2024-10-25 10:41:08,945 - train_one_epoch - INFO - Start train one epoch
+2024-10-25 10:41:18,844 - log_every - INFO - Epoch: [10]  [ 0/12]  eta: 0:01:58  lr: 0.000100  loss_protop: 4.7610 (4.7610)  loss_feature: 3.6785 (3.6785)  loss_sep: 0.0064 (0.0064)  loss_quan: 0.2734 (0.2734)  time: 9.8978  data: 9.6390  max mem: 3597
+2024-10-25 10:41:21,182 - log_every - INFO - Epoch: [10]  [11/12]  eta: 0:00:01  lr: 0.000100  loss_protop: 4.7408 (4.7350)  loss_feature: 3.6789 (3.6800)  loss_sep: 0.0045 (0.0048)  loss_quan: 0.2700 (0.2696)  time: 1.0196  data: 0.8668  max mem: 3597
+2024-10-25 10:41:21,641 - log_every - INFO - Epoch: [10] Total time: 0:00:12 (1.0579 s / it)
+2024-10-25 10:41:21,641 - evaluate - INFO - Start validation
+2024-10-25 10:41:36,290 - evaluate - INFO - labeled_nums: 100
+2024-10-25 10:41:37,480 - evaluate - INFO - labeled_nums: 100
+2024-10-25 10:41:38,406 - evaluate - INFO - labeled_nums: 100
+2024-10-25 10:41:39,315 - evaluate - INFO - labeled_nums: 100
+2024-10-25 10:41:40,244 - evaluate - INFO - labeled_nums: 100
+2024-10-25 10:41:41,161 - evaluate - INFO - labeled_nums: 100
+2024-10-25 10:41:42,096 - evaluate - INFO - labeled_nums: 100
+2024-10-25 10:41:43,022 - evaluate - INFO - labeled_nums: 100
+2024-10-25 10:41:51,492 - evaluate - INFO - labeled_nums: 100
+2024-10-25 10:41:52,196 - evaluate - INFO - labeled_nums: 100
+2024-10-25 10:41:52,864 - evaluate - INFO - labeled_nums: 100
+2024-10-25 10:41:53,513 - evaluate - INFO - labeled_nums: 100
+2024-10-25 10:41:54,148 - evaluate - INFO - labeled_nums: 100
+2024-10-25 10:41:54,768 - evaluate - INFO - labeled_nums: 100
+2024-10-25 10:41:55,369 - evaluate - INFO - labeled_nums: 100
+2024-10-25 10:41:55,971 - evaluate - INFO - labeled_nums: 100
+2024-10-25 10:41:56,531 - evaluate - INFO - labeled_nums: 100
+2024-10-25 10:41:56,857 - evaluate - INFO - labeled_nums: 100
+2024-10-25 10:41:58,431 - evaluate - INFO - test len(list(set(preds1))): 380 len(preds): 4496
+2024-10-25 10:41:58,431 - evaluate - INFO - Evaluate: all_acc: 0.246 old_acc: 0.296 new_acc: 0.221
+2024-10-25 10:41:58,432 - main - INFO - Averaged stats:
+2024-10-25 10:41:58,432 - main - INFO - {'lr': 9.95510645972451e-05, 'loss_protop': 4.7349891265233355, 'loss_feature': 3.6800036430358887, 'loss_sep': 0.004827473875290404, 'loss_quan': 0.2695719401041667}
+2024-10-25 10:41:58,433 - train_one_epoch - INFO - Start train one epoch
+2024-10-25 10:42:08,360 - log_every - INFO - Epoch: [11]  [ 0/12]  eta: 0:01:59  lr: 0.000099  loss_protop: 4.7710 (4.7710)  loss_feature: 3.6730 (3.6730)  loss_sep: 0.0013 (0.0013)  loss_quan: 0.2634 (0.2634)  time: 9.9270  data: 9.7423  max mem: 3597
+2024-10-25 10:42:10,664 - log_every - INFO - Epoch: [11]  [11/12]  eta: 0:00:01  lr: 0.000099  loss_protop: 4.7230 (4.7340)  loss_feature: 3.6779 (3.6768)  loss_sep: 0.0036 (0.0041)  loss_quan: 0.2576 (0.2586)  time: 1.0191  data: 0.8753  max mem: 3597
+2024-10-25 10:42:11,117 - log_every - INFO - Epoch: [11] Total time: 0:00:12 (1.0570 s / it)
+2024-10-25 10:42:11,117 - evaluate - INFO - Start validation
+2024-10-25 10:42:25,714 - evaluate - INFO - labeled_nums: 100
+2024-10-25 10:42:27,019 - evaluate - INFO - labeled_nums: 100
+2024-10-25 10:42:27,939 - evaluate - INFO - labeled_nums: 100
+2024-10-25 10:42:28,881 - evaluate - INFO - labeled_nums: 100
+2024-10-25 10:42:29,820 - evaluate - INFO - labeled_nums: 100
+2024-10-25 10:42:30,745 - evaluate - INFO - labeled_nums: 100
+2024-10-25 10:42:31,679 - evaluate - INFO - labeled_nums: 100
+2024-10-25 10:42:32,586 - evaluate - INFO - labeled_nums: 100
+2024-10-25 10:42:40,972 - evaluate - INFO - labeled_nums: 100
+2024-10-25 10:42:41,702 - evaluate - INFO - labeled_nums: 100
+2024-10-25 10:42:42,351 - evaluate - INFO - labeled_nums: 100
+2024-10-25 10:42:43,008 - evaluate - INFO - labeled_nums: 100
+2024-10-25 10:42:43,649 - evaluate - INFO - labeled_nums: 100
+2024-10-25 10:42:44,304 - evaluate - INFO - labeled_nums: 100
+2024-10-25 10:42:44,916 - evaluate - INFO - labeled_nums: 100
+2024-10-25 10:42:45,520 - evaluate - INFO - labeled_nums: 100
+2024-10-25 10:42:46,080 - evaluate - INFO - labeled_nums: 100
+2024-10-25 10:42:46,407 - evaluate - INFO - labeled_nums: 100
+2024-10-25 10:42:47,962 - evaluate - INFO - test len(list(set(preds1))): 393 len(preds): 4496
+2024-10-25 10:42:47,962 - evaluate - INFO - Evaluate: all_acc: 0.253 old_acc: 0.318 new_acc: 0.220
+2024-10-25 10:42:47,963 - main - INFO - Averaged stats:
+2024-10-25 10:42:47,963 - main - INFO - {'lr': 9.944597532678122e-05, 'loss_protop': 4.7340413729349775, 'loss_feature': 3.6768378615379333, 'loss_sep': 0.004143880166035767, 'loss_quan': 0.2585652669270833}
+2024-10-25 10:42:47,964 - train_one_epoch - INFO - Start train one epoch
+2024-10-25 10:42:58,049 - log_every - INFO - Epoch: [12]  [ 0/12]  eta: 0:02:01  lr: 0.000099  loss_protop: 4.5789 (4.5789)  loss_feature: 3.6717 (3.6717)  loss_sep: 0.0057 (0.0057)  loss_quan: 0.2544 (0.2544)  time: 10.0843  data: 9.8789  max mem: 3597
+2024-10-25 10:43:00,198 - log_every - INFO - Epoch: [12]  [11/12]  eta: 0:00:01  lr: 0.000099  loss_protop: 4.7089 (4.7188)  loss_feature: 3.6719 (3.6733)  loss_sep: 0.0041 (0.0044)  loss_quan: 0.2479 (0.2483)  time: 1.0194  data: 0.8727  max mem: 3597
+2024-10-25 10:43:00,661 - log_every - INFO - Epoch: [12] Total time: 0:00:12 (1.0581 s / it)
+2024-10-25 10:43:00,661 - evaluate - INFO - Start validation
