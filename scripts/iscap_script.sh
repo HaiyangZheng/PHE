@@ -19,7 +19,7 @@ CUDA_VISIBLE_DEVICES=0
 data_set=CD_Car
 use_global=True
 global_proto_per_class=10
-dim=768
+prototype_dim=768
 batch_size=128
 seed=1027
 
@@ -60,3 +60,4 @@ python main.py \
     --global_proto_per_class=$global_proto_per_class \
     --mask_theta=0.1 \
     --hash_code_length=12 \
+    --prototype_dim=$prototype_dim \

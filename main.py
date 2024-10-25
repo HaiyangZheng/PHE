@@ -180,6 +180,7 @@ def get_args_parser():
                         help='number of distributed processes')
     parser.add_argument('--dist_url', default='env://', help='url used to set up distributed training')
     parser.add_argument('--hash_code_length', default=12, type=int)
+    parser.add_argument('--prototype_dim', default=768, type=int)
 
     return parser
 
@@ -502,27 +503,27 @@ if __name__ == '__main__':
     if args.data_set == 'CD_CUB2011U':
         args.data_root = cub_root
         args.labeled_nums=100
-        prototype_shape=[args.labeled_nums * args.global_proto_per_class, args.dim, 1, 1]
+        prototype_shape=[args.labeled_nums * args.global_proto_per_class, args.prototype_dim, 1, 1]
 
     elif args.data_set == 'CD_Car':
         args.data_root = car_root
         args.labeled_nums=98
-        prototype_shape=[args.labeled_nums * args.global_proto_per_class, args.dim, 1, 1]
+        prototype_shape=[args.labeled_nums * args.global_proto_per_class, args.prototype_dim, 1, 1]
 
     elif args.data_set == 'CD_food':
         args.data_root = food_101_root
         args.labeled_nums=51
-        prototype_shape=[args.labeled_nums * args.global_proto_per_class, args.dim, 1, 1]
+        prototype_shape=[args.labeled_nums * args.global_proto_per_class, args.prototype_dim, 1, 1]
 
     elif args.data_set == 'CD_pets':
         args.data_root = oxford_pet_root
         args.labeled_nums=19
-        prototype_shape=[args.labeled_nums * args.global_proto_per_class, args.dim, 1, 1]
+        prototype_shape=[args.labeled_nums * args.global_proto_per_class, args.prototype_dim, 1, 1]
 
     elif args.data_set in valid_super_categories:
         args.data_root = inaturalist_root
         args.labeled_nums=inaturalist_classnums[args.data_set]
-        prototype_shape=[args.labeled_nums * args.global_proto_per_class, args.dim, 1, 1]
+        prototype_shape=[args.labeled_nums * args.global_proto_per_class, args.prototype_dim, 1, 1]
     
     args.pretrain_path = pretrain_path
 
