@@ -1,0 +1,17 @@
+local:
+cub_root = '/wang_hp/zhy/data'
+car_root = '/wang_hp/zhy/data/stanford_cars'
+oxford_pet_root = '/wang_hp/zhy/data'
+food_101_root = '/wang_hp/zhy/data/food-101'
+
+uon1:
+cub_root = '/db/pszzz/NCD_dataset/cub'
+car_root = '/db/pszzz/NCD_dataset/stanford_cars'
+oxford_pet_root = '/db/pszzz/NCD_dataset'
+food_101_root = '/db/pszzz/NCD_dataset/food-101'
+
+uon2:
+cub_root = '/db/psawl/cub'
+car_root = '/db/psawl/stanford_cars'
+oxford_pet_root = '/db/psawl'
+food_101_root = '/db/psawl/food101'
