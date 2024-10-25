@@ -7,7 +7,7 @@
 #SBATCH --time 1-00:00:00     # format: HH:MM:SS
 #SBATCH --gres=gpu:1        # 4 gpus per node out of 4
 #SBATCH --mem=100000          # memory per node out of 494000MB (481GB)
-#SBATCH --job-name=g_c_82
+#SBATCH --job-name=ocdcub
 #SBATCH -o /leonardo_work/IscrC_Fed-GCD/hyzheng/PHE_release/log/cub_test.log
 
 module load cuda/12.1
