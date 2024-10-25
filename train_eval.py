@@ -212,7 +212,7 @@ def evaluate(test_loader_unlabelled, model, args, centers, dis_max):
 
     all_acc, old_acc, new_acc = split_cluster_acc_v2(y_true=targets, y_pred=preds1, mask=mask)
     logger.info(f'test len(list(set(preds1))): {len(list(set(preds1)))} len(preds): {len(preds1)}')
-    logger.info(f"case 1 all_acc: {all_acc:.3f} old_acc: {old_acc:.3f} new_acc: {new_acc:.3f}")
+    logger.info(f"Evaluate: all_acc: {all_acc:.3f} old_acc: {old_acc:.3f} new_acc: {new_acc:.3f}")
 
 
     return {k: meter.global_avg for k, meter in metric_logger.meters.items()}

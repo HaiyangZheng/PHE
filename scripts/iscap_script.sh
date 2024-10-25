@@ -16,7 +16,7 @@ source /leonardo/home/userexternal/hzheng00/miniconda3/bin/activate fedgcd
 CUDA_VISIBLE_DEVICES=0
 
 # Training Config
-data_set=CD_Car
+data_set=CD_CUB2011U
 use_global=True
 global_proto_per_class=10
 prototype_dim=768
