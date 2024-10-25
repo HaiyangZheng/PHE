@@ -11,7 +11,7 @@ import torch
 import logging
 import os
 import torchvision.transforms as transforms
-from tensorboardX import SummaryWriter
+# from tensorboardX import SummaryWriter
 
 from pathlib import Path
 
@@ -30,7 +30,7 @@ from tools.preprocess import mean, std
 from tools.datasets import build_dataset
 from tools.utils import str2bool
 
-from config import pretrain_path, oxford_pet_root, cub_root, car_root, food_101_root
+from config import pretrain_path, oxford_pet_root, cub_root, car_root, food_101_root, inaturalist_root
 
 def get_args_parser():
     parser = argparse.ArgumentParser('Vision Transformer KD training and evaluation script',
@@ -222,13 +222,13 @@ def get_outlog(args):
     os.makedirs(ckpt_dir, exist_ok=True)
     os.makedirs(tb_dir, exist_ok=True)
     os.makedirs(tb_log_dir, exist_ok=True)
-    tb_writer = SummaryWriter(
-        log_dir=os.path.join(
-            tb_dir,
-            args.model+ "_" + args.data_set
-        ),
-        flush_secs=1
-    )
+    # tb_writer = SummaryWriter(
+    #     log_dir=os.path.join(
+    #         tb_dir,
+    #         args.model+ "_" + args.data_set
+    #     ),
+    #     flush_secs=1
+    # )
     logger = utils.get_logger(
         level=logging.INFO,
         mode="w",
@@ -239,7 +239,7 @@ def get_outlog(args):
         )
     )
 
-    return tb_writer, logger
+    return None, logger
 
 
 def set_seed(seed):
@@ -262,7 +262,8 @@ def main(args):
         args.smoothing = 0.1
     utils.init_distributed_mode(args)
 
-    tb_writer, logger = get_outlog(args)
+    # tb_writer, logger = get_outlog(args)
+    _, logger = get_outlog(args)
 
     logger.info("Start running with args: \n{}".format(args))
     logger.info("Distributed: {}".format(args.distributed))
@@ -456,7 +457,7 @@ def main(args):
             model=model, criterion=criterion, data_loader=data_loader_train, data_loader_val=data_loader_val, test_loader_unlabelled=test_loader_unlabelled,
             optimizer=optimizer, device=device, epoch=epoch, loss_scaler=loss_scaler,
             max_norm=args.clip_grad, model_ema=model_ema, mixup_fn=mixup_fn,
-            args=args, tb_writer=tb_writer, iteration=__global_values__["it"],
+            args=args, tb_writer=None, iteration=__global_values__["it"],
             # set_training_mode=args.finetune == ''  # keep in eval mode during finetuning
         )
         logger.info("Averaged stats:")
@@ -525,6 +526,8 @@ if __name__ == '__main__':
         Path(args.output_dir).mkdir(parents=True, exist_ok=True)
 
     __global_values__ = dict(it=0)
+
+    valid_super_categories = ['Actinopterygii', 'Amphibia', 'Animalia', 'Arachnida', 'Aves', 'Chromista', 'Fungi', 'Insecta', 'Mammalia', 'Mollusca', 'Plantae', 'Protozoa', 'Reptilia']
     if args.data_set == 'CD_CUB2011U':
         args.data_root = cub_root
     elif args.data_set == 'CD_Car':
@@ -533,6 +536,8 @@ if __name__ == '__main__':
         args.data_root = food_101_root
     elif args.data_set == 'CD_pets':
         args.data_root = oxford_pet_root
+    elif args.data_set in valid_super_categories:
+        args.data_root = inaturalist_root
     
     args.pretrain_path = pretrain_path
 

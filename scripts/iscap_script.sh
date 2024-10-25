@@ -70,7 +70,7 @@ labeled_nums=100
 data_path=/db/pszzz/xxx
 
 
-python main_uon_pszzz.py \
+python main.py \
     --base_architecture=$model \
     --data_set=$data_set \
     --data_path=$data_path \

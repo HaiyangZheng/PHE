@@ -19,7 +19,7 @@ from timm.loss import SoftTargetCrossEntropy
 
 from torch.nn.modules.loss import _Loss
 import tools.utils as utils
-from tensorboardX import SummaryWriter
+# from tensorboardX import SummaryWriter
 import numpy as np
 from sklearn.cluster import KMeans
 from scipy.optimize import linear_sum_assignment as linear_assignment
@@ -647,7 +647,7 @@ def calculate_alpha(epoch, max_epoch=100, max_alpha=0.5):
 def train_one_epoch(model: torch.nn.Module, criterion: _Loss,
                     data_loader: Iterable, data_loader_val, test_loader_unlabelled,
                     optimizer: torch.optim.Optimizer,
-                    tb_writer: SummaryWriter, iteration: int,
+                    tb_writer: None, iteration: int,
                     device: torch.device, epoch: int, loss_scaler, max_norm: float = 0,
                     model_ema: Optional[ModelEma] = None, mixup_fn: Optional[Mixup] = None,
                     args=None,

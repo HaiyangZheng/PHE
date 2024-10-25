@@ -5,7 +5,6 @@ from typing import Any, Tuple
 from PIL import Image
 from torchvision.datasets import INaturalist
 
-inaturalist_root = '/db/pszzz/iNaturalist'
 
 class INaturalist_SUB(INaturalist):
     def __init__(self, root, version='2017', subclassname='', transform=None, target_transform=None, download=False):
@@ -139,12 +138,13 @@ def get_inaturalist_datasets(train_transform,
                           train_classes=(0, 1, 8, 9),
                           prop_train_labels=0.8, 
                           split_train_val=False, 
-                          seed=0):
+                          seed=0,
+                          data_root=None):
 
     np.random.seed(seed)
 
     # Init entire training set
-    whole_training_set = INaturalist_SUB(root=inaturalist_root, subclassname=subclassname, transform=train_transform)
+    whole_training_set = INaturalist_SUB(root=data_root.inaturalist_root, subclassname=subclassname, transform=train_transform)
 
     # Get labelled training set which has subsampled classes, then subsample some indices from that
     train_dataset_labelled = subsample_classes(deepcopy(whole_training_set), include_classes=train_classes)
@@ -162,7 +162,7 @@ def get_inaturalist_datasets(train_transform,
     train_dataset_unlabelled = subsample_dataset(deepcopy(whole_training_set), np.array(list(unlabelled_indices)))
 
     # Get test set for all classes
-    whole_test_dataset = INaturalist_SUB(root=inaturalist_root, subclassname=subclassname, transform=test_transform)
+    whole_test_dataset = INaturalist_SUB(root=data_root.inaturalist_root, subclassname=subclassname, transform=test_transform)
     test_dataset = subsample_classes(deepcopy(whole_test_dataset), include_classes=train_classes)
 
     # Either split train into train and val or use test set as val

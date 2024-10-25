@@ -508,7 +508,7 @@ def build_dataset(is_train, args):
         # transform = ContrastiveLearningViewGenerator(base_transform=transform, n_views=2)
 
         train_dataset, test_dataset, train_dataset_unlabelled = get_inaturalist_datasets(train_transform=transform, test_transform=test_transform, subclassname='Amphibia',
-                                   train_classes=range(58), prop_train_labels=0.5)
+                                   train_classes=range(58), prop_train_labels=0.5, data_root=args.data_root)
 
         unlabelled_train_examples_test = deepcopy(train_dataset_unlabelled)
         unlabelled_train_examples_test.transform = test_transform
@@ -541,7 +541,7 @@ def build_dataset(is_train, args):
         # transform = ContrastiveLearningViewGenerator(base_transform=transform, n_views=2)
 
         train_dataset, test_dataset, train_dataset_unlabelled = get_inaturalist_datasets(train_transform=transform, test_transform=test_transform, subclassname='Animalia',
-                                   train_classes=range(39), prop_train_labels=0.5)
+                                   train_classes=range(39), prop_train_labels=0.5, data_root=args.data_root)
 
         unlabelled_train_examples_test = deepcopy(train_dataset_unlabelled)
         unlabelled_train_examples_test.transform = test_transform
@@ -574,7 +574,7 @@ def build_dataset(is_train, args):
         # transform = ContrastiveLearningViewGenerator(base_transform=transform, n_views=2)
 
         train_dataset, test_dataset, train_dataset_unlabelled = get_inaturalist_datasets(train_transform=transform, test_transform=test_transform, subclassname='Arachnida',
-                                   train_classes=range(28), prop_train_labels=0.5)
+                                   train_classes=range(28), prop_train_labels=0.5, data_root=args.data_root)
 
         unlabelled_train_examples_test = deepcopy(train_dataset_unlabelled)
         unlabelled_train_examples_test.transform = test_transform
@@ -607,7 +607,7 @@ def build_dataset(is_train, args):
         # transform = ContrastiveLearningViewGenerator(base_transform=transform, n_views=2)
 
         train_dataset, test_dataset, train_dataset_unlabelled = get_inaturalist_datasets(train_transform=transform, test_transform=test_transform, subclassname='Fungi',
-                                   train_classes=range(61), prop_train_labels=0.5)
+                                   train_classes=range(61), prop_train_labels=0.5, data_root=args.data_root)
 
         unlabelled_train_examples_test = deepcopy(train_dataset_unlabelled)
         unlabelled_train_examples_test.transform = test_transform
@@ -640,7 +640,7 @@ def build_dataset(is_train, args):
         # transform = ContrastiveLearningViewGenerator(base_transform=transform, n_views=2)
 
         train_dataset, test_dataset, train_dataset_unlabelled = get_inaturalist_datasets(train_transform=transform, test_transform=test_transform, subclassname='Mammalia',
-                                   train_classes=range(93), prop_train_labels=0.5)
+                                   train_classes=range(93), prop_train_labels=0.5, data_root=args.data_root)
 
         unlabelled_train_examples_test = deepcopy(train_dataset_unlabelled)
         unlabelled_train_examples_test.transform = test_transform
@@ -673,7 +673,7 @@ def build_dataset(is_train, args):
         # transform = ContrastiveLearningViewGenerator(base_transform=transform, n_views=2)
 
         train_dataset, test_dataset, train_dataset_unlabelled = get_inaturalist_datasets(train_transform=transform, test_transform=test_transform, subclassname='Mollusca',
-                                   train_classes=range(47), prop_train_labels=0.5)
+                                   train_classes=range(47), prop_train_labels=0.5, data_root=args.data_root)
 
         unlabelled_train_examples_test = deepcopy(train_dataset_unlabelled)
         unlabelled_train_examples_test.transform = test_transform
@@ -706,7 +706,7 @@ def build_dataset(is_train, args):
         # transform = ContrastiveLearningViewGenerator(base_transform=transform, n_views=2)
 
         train_dataset, test_dataset, train_dataset_unlabelled = get_inaturalist_datasets(train_transform=transform, test_transform=test_transform, subclassname='Reptilia',
-                                   train_classes=range(145), prop_train_labels=0.5)
+                                   train_classes=range(145), prop_train_labels=0.5, data_root=args.data_root)
 
         unlabelled_train_examples_test = deepcopy(train_dataset_unlabelled)
         unlabelled_train_examples_test.transform = test_transform
