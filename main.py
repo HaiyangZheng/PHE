@@ -1,7 +1,3 @@
-
-   
-# Copyright (c) 2015-present, Facebook, Inc.
-# All rights reserved.
 import argparse
 import datetime
 import numpy as np
@@ -23,9 +19,9 @@ from tools.create_scheduler import create_scheduler
 
 from timm.utils import NativeScaler, get_state_dict, ModelEma
 
+import phe_model
+from train_eval import train_one_epoch, evaluate
 import tools.utils as utils
-import protopformer
-from tools.engine_proto import train_one_epoch, evaluate
 from tools.preprocess import mean, std
 from tools.datasets import build_dataset
 from tools.utils import str2bool
@@ -36,31 +32,19 @@ def get_args_parser():
     parser = argparse.ArgumentParser('Vision Transformer KD training and evaluation script',
                         add_help=False)
     parser.add_argument('--batch_size', default=256, type=int)
-    # parser.add_argument('--distill', type=bool, default=False)
     parser.add_argument('--distillw', type=float, default=0.5, help='distill rate (default: 0.5)')
     parser.add_argument('--enable_smoothing', type=bool, default=False)
     parser.add_argument('--enable_mixup', type=bool, default=False)
     parser.add_argument('--w_dis_token', type=bool, default=False)
 
-    # ProtoPFormer
-    parser.add_argument('--base_architecture', type=str, default='deit_tiny_patch16_224')
     parser.add_argument('--img_size', type=int, default=224)
     parser.add_argument('--prototype_shape', nargs='+', type=int, default=[2000, 192, 1, 1])
     parser.add_argument('--prototype_activation_function', type=str, default='log')
     parser.add_argument('--add_on_layers_type', type=str, default='regular')
     parser.add_argument('--baseline_path', type=str, default=None)
-    parser.add_argument('--reserve_layers', nargs='+', type=int, default=[])
-    parser.add_argument('--reserve_token_nums', nargs='+', type=int, default=[])
     parser.add_argument('--use_global', type=str2bool, default=False)
-    parser.add_argument('--use_ppc_loss', type=str2bool, default=False)
-    parser.add_argument('--ppc_cov_thresh', type=float, default=1.)
-    parser.add_argument('--ppc_mean_thresh', type=float, default=2.)
-    parser.add_argument('--global_coe', type=float, default=0.5)
     parser.add_argument('--global_proto_per_class', type=int, default=5)
-    parser.add_argument('--ppc_cov_coe', type=float, default=0.1)
-    parser.add_argument('--ppc_mean_coe', type=float, default=0.5)
 
-    parser.add_argument('--data_path', type=str, default='./datasets/cub200_cropped/')
 
     parser.add_argument('--features_lr', type=float, default=1e-4)
     parser.add_argument('--add_on_layers_lr', type=float, default=3e-3)
@@ -74,9 +58,6 @@ def get_args_parser():
     parser.add_argument('--epochs', type=int, default=40)
 
     # Model parameters
-    parser.add_argument('--model', default='deit_tiny_patch16_224', type=str, metavar='MODEL',
-                        help='Name of model to train') 
-    parser.add_argument('--input_size', default=224, type=int, help='images input size')
     parser.add_argument('--save_ep_freq', default=400, type=int, help='save epoch frequency')
 
     parser.add_argument('--drop', type=float, default=0.0, metavar='PCT',
@@ -140,12 +121,6 @@ def get_args_parser():
     parser.add_argument('--train-interpolation', type=str, default='bicubic',
                         help='Training interpolation (random, bilinear, bicubic default: "bicubic")')
 
-    """
-    parser.add_argument('--repeated-aug', action='store_true')
-    parser.add_argument('--no-repeated-aug', action='store_false', dest='repeated_aug')
-    parser.set_defaults(repeated_aug=True)
-    """
-
     # * Random Erase params
     parser.add_argument('--reprob', type=float, default=0.25, metavar='PCT',
                         help='Random erase prob (default: 0.25)')
@@ -170,15 +145,13 @@ def get_args_parser():
     parser.add_argument('--mixup-mode', type=str, default='batch',
                         help='How to apply mixup/cutmix params. Per "batch", "pair", or "elem"')
 
-    # * Finetuning params
-    parser.add_argument('--finetune', default='', help='finetune from checkpoint')
 
     # Dataset parameters
     parser.add_argument('--prop_train_labels', type=float, default=0.5)
     parser.add_argument('--mask_theta', type=float, default=0.1)
     parser.add_argument('--labeled_nums', type=int, default=50)
     parser.add_argument('--data_set', default='CIFAR100', 
-    choices=['CUB2011U', 'Car', 'Dogs', 'CD_CUB2011U', 'CD_CIFAR100', 'CD_CIFAR10', 'CD_Car', 'CD_herb', 'CD_food', 'CD_aircraft', 'CD_flower', 'CD_pets', 'Actinopterygii', 'Amphibia', 'Animalia', 'Arachnida', 'Aves', 'Chromista', 'Fungi', 'Insecta', 'Mammalia', 'Mollusca', 'Plantae', 'Protozoa', 'Reptilia'],
+    choices=['CD_CUB2011U', 'CD_CIFAR100', 'CD_CIFAR10', 'CD_Car', 'CD_herb', 'CD_food', 'CD_aircraft', 'CD_flower', 'CD_pets', 'Actinopterygii', 'Amphibia', 'Animalia', 'Arachnida', 'Aves', 'Chromista', 'Fungi', 'Insecta', 'Mammalia', 'Mollusca', 'Plantae', 'Protozoa', 'Reptilia'],
     # choices=['CIFAR', 'IMNET', 'INAT', 'INAT19'],
                         type=str, help='Image Net dataset path')
     parser.add_argument('--inat-category', default='name',
@@ -206,6 +179,7 @@ def get_args_parser():
     parser.add_argument('--world_size', default=1, type=int,
                         help='number of distributed processes')
     parser.add_argument('--dist_url', default='env://', help='url used to set up distributed training')
+    parser.add_argument('--hash_code_length', default=12, type=int)
 
     return parser
 
@@ -276,13 +250,10 @@ def main(args):
     normalize = transforms.Normalize(mean=mean,
                                     std=std)
 
-    # dataset_train, args.nb_classes = build_dataset(is_train=True, args=args)
-    # dataset_val, _ = build_dataset(is_train=False, args=args)
+
     dataset_train, dataset_val, test_dataset_unlabelled, args.nb_classes = build_dataset(is_train=True, args=args)
     print("len(dataset_train)",len(dataset_train))
 
-    # dataset_train, args.nb_classes = build_dataset(is_train=True, args=args)
-    # dataset_val, _ = build_dataset(is_train=False, args=args)
     logger.info("Dataset num_classes: {}".format(args.nb_classes))
     logger.info("train {} test: {}".format(len(dataset_train), len(dataset_val)))
     logger.info("test_dataset_unlabelled: {}".format(len(test_dataset_unlabelled)))
@@ -323,10 +294,6 @@ def main(args):
         drop_last=False
     )
 
-    # data_loader_train = torch.utils.data.DataLoader(dataset_train, num_workers=args.num_workers, batch_size=args.batch_size, 
-    #                             shuffle=True, drop_last=True)
-    # data_loader_val = torch.utils.data.DataLoader(dataset_val, num_workers=args.num_workers,
-    #                                         batch_size=args.batch_size, shuffle=False)
 
     test_loader_unlabelled = torch.utils.data.DataLoader(test_dataset_unlabelled, num_workers=8,
                                         batch_size=256, shuffle=False, pin_memory=False)
@@ -351,28 +318,22 @@ def main(args):
         logger.info("Mixup is not enabled")
 
     # logger.info(f"Creating model: {args.model}")
-    model = protopformer.construct_PPNet_dino(base_architecture=args.base_architecture,
-                                pretrained=True, img_size=args.img_size,
+    model = phe_model.construct_PPNet_dino(img_size=args.img_size,
                                 prototype_shape=args.prototype_shape,
                                 num_classes=args.nb_classes,
-                                reserve_layers=args.reserve_layers,
-                                reserve_token_nums=args.reserve_token_nums,
                                 use_global=args.use_global,
-                                use_ppc_loss=args.use_ppc_loss,
-                                ppc_cov_thresh=args.ppc_cov_thresh,
-                                ppc_mean_thresh=args.ppc_mean_thresh,
-                                global_coe=args.global_coe,
                                 global_proto_per_class=args.global_proto_per_class,
                                 prototype_activation_function=args.prototype_activation_function,
                                 add_on_layers_type=args.add_on_layers_type,
                                 mask_theta=args.mask_theta,
-                                pretrain_path=args.pretrain_path)
-    ####my
+                                pretrain_path=args.pretrain_pat,
+                                hash_code_length=args.hash_code_length,)
+    #### print require grad
     for name, param in model.named_parameters():
         if param.requires_grad:
             print("require grad:", name)
     model.to(device)
-    ####mt
+    #### print require grad
 
     model_ema = None
     if args.model_ema:
@@ -458,7 +419,7 @@ def main(args):
             optimizer=optimizer, device=device, epoch=epoch, loss_scaler=loss_scaler,
             max_norm=args.clip_grad, model_ema=model_ema, mixup_fn=mixup_fn,
             args=args, tb_writer=None, iteration=__global_values__["it"],
-            # set_training_mode=args.finetune == ''  # keep in eval mode during finetuning
+
         )
         logger.info("Averaged stats:")
         logger.info(train_stats)
@@ -528,16 +489,40 @@ if __name__ == '__main__':
     __global_values__ = dict(it=0)
 
     valid_super_categories = ['Actinopterygii', 'Amphibia', 'Animalia', 'Arachnida', 'Aves', 'Chromista', 'Fungi', 'Insecta', 'Mammalia', 'Mollusca', 'Plantae', 'Protozoa', 'Reptilia']
+    inaturalist_classnums = {
+        'Amphibia': 58,
+        'Animalia': 39,
+        'Arachnida': 28,
+        'Fungi': 61,
+        'Mammalia': 93,
+        'Mollusca': 47,
+        'Reptilia': 145,
+    }
+
     if args.data_set == 'CD_CUB2011U':
         args.data_root = cub_root
+        args.labeled_nums=100
+        prototype_shape=[args.labeled_nums * args.global_proto_per_class, args.dim, 1, 1]
+
     elif args.data_set == 'CD_Car':
         args.data_root = car_root
+        args.labeled_nums=98
+        prototype_shape=[args.labeled_nums * args.global_proto_per_class, args.dim, 1, 1]
+
     elif args.data_set == 'CD_food':
         args.data_root = food_101_root
+        args.labeled_nums=51
+        prototype_shape=[args.labeled_nums * args.global_proto_per_class, args.dim, 1, 1]
+
     elif args.data_set == 'CD_pets':
         args.data_root = oxford_pet_root
+        args.labeled_nums=19
+        prototype_shape=[args.labeled_nums * args.global_proto_per_class, args.dim, 1, 1]
+
     elif args.data_set in valid_super_categories:
         args.data_root = inaturalist_root
+        args.labeled_nums=inaturalist_classnums[args.data_set]
+        prototype_shape=[args.labeled_nums * args.global_proto_per_class, args.dim, 1, 1]
     
     args.pretrain_path = pretrain_path
 
