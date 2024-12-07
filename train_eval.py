@@ -177,7 +177,7 @@ def evaluate(test_loader_unlabelled, model, args, centers, dis_max):
 
         all_feats.append(feats.cpu().numpy())
         targets = np.append(targets, label.cpu().numpy())
-        logger.info(f"labeled_nums: {args.labeled_nums}")
+        # logger.info(f"labeled_nums: {args.labeled_nums}")
         mask = np.append(mask, np.array([True if x.item() in range(args.labeled_nums) else False for x in label]))
     
     all_feats = np.concatenate(all_feats, axis=0)

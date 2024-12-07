@@ -42,7 +42,7 @@ output_dir=output_cosine/
 
 python main.py \
     --data_set=$data_set \
-    --output_dir=$output_dir/$data_set/"test" \
+    --output_dir=$output_dir/$data_set/"scars_iscap_seed(1027)" \
     --batch_size=$batch_size \
     --seed=1027 \
     --opt=$opt \
