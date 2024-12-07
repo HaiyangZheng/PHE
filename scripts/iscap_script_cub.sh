@@ -8,7 +8,7 @@
 #SBATCH --gres=gpu:1        # 4 gpus per node out of 4
 #SBATCH --mem=100000          # memory per node out of 494000MB (481GB)
 #SBATCH --job-name=ocdcub
-#SBATCH -o /leonardo_work/IscrC_Fed-GCD/hyzheng/PHE_release/log/cub0.log
+#SBATCH -o /leonardo_work/IscrC_Fed-GCD/hyzheng/PHE_release/log/cub1.log
 
 module load cuda/12.1
 source /leonardo/home/userexternal/hzheng00/miniconda3/bin/activate fedgcd
@@ -21,7 +21,7 @@ use_global=True
 global_proto_per_class=10
 prototype_dim=768
 batch_size=128
-seed=1027
+seed=1028
 
 # Learning Rate
 warmup_lr=1e-4
@@ -42,7 +42,7 @@ output_dir=output_cosine/
 
 python main.py \
     --data_set=$data_set \
-    --output_dir=$output_dir/$data_set/"cub_iscap_seed(1027)" \
+    --output_dir=$output_dir/$data_set/"cub_iscap_seed(1028)" \
     --batch_size=$batch_size \
     --seed=1027 \
     --opt=$opt \
