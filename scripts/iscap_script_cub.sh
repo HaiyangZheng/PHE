@@ -7,8 +7,8 @@
 #SBATCH --time 1-00:00:00     # format: HH:MM:SS
 #SBATCH --gres=gpu:1        # 4 gpus per node out of 4
 #SBATCH --mem=100000          # memory per node out of 494000MB (481GB)
-#SBATCH --job-name=ocdscar
-#SBATCH -o /leonardo_work/IscrC_Fed-GCD/hyzheng/PHE_release/log/test_scars.log
+#SBATCH --job-name=ocdcub
+#SBATCH -o /leonardo_work/IscrC_Fed-GCD/hyzheng/PHE_release/log/cub0.log
 
 module load cuda/12.1
 source /leonardo/home/userexternal/hzheng00/miniconda3/bin/activate fedgcd
@@ -16,7 +16,7 @@ source /leonardo/home/userexternal/hzheng00/miniconda3/bin/activate fedgcd
 CUDA_VISIBLE_DEVICES=0
 
 # Training Config
-data_set=CD_Car
+data_set=CD_CUB2011U
 use_global=True
 global_proto_per_class=10
 prototype_dim=768
@@ -42,7 +42,7 @@ output_dir=output_cosine/
 
 python main.py \
     --data_set=$data_set \
-    --output_dir=$output_dir/$data_set/"scars_iscap_seed(1027)" \
+    --output_dir=$output_dir/$data_set/"cub_iscap_seed(1027)" \
     --batch_size=$batch_size \
     --seed=1027 \
     --opt=$opt \
