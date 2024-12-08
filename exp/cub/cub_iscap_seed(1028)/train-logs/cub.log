@@ -1990,3 +1990,18 @@ Namespace(batch_size=128, img_size=224, prototype_shape=[2000, 192, 1, 1], proto
 2024-12-08 23:43:48,485 - log_every - INFO - Epoch: [198] Total time: 0:00:03 (0.3183 s / it)
 2024-12-08 23:43:48,486 - evaluate - INFO - Start validation
 2024-12-08 23:43:48,486 - evaluate - INFO - Radius: 1
+2024-12-08 23:44:17,753 - evaluate - INFO - Evaluate V1: all_acc: 0.494 old_acc: 0.825 new_acc: 0.329
+2024-12-08 23:44:17,762 - evaluate - INFO - Evaluate V2: all_acc: 0.366 old_acc: 0.578 new_acc: 0.261
+2024-12-08 23:44:17,763 - main - INFO - Averaged stats:
+2024-12-08 23:44:17,763 - main - INFO - {'lr': 1.0049955626711357e-05, 'loss_protop': 0.04784095846116543, 'loss_feature': 3.648088753223419, 'loss_sep': 0.00016276041181602827, 'loss_quan': 0.050320943196614586}
+2024-12-08 23:44:17,764 - train_and_evaluate - INFO - Start train one epoch
+2024-12-08 23:44:18,973 - log_every - INFO - Epoch: [199]  [ 0/12]  eta: 0:00:14  lr: 0.000010  loss_protop: 0.0288 (0.0288)  loss_feature: 3.6484 (3.6484)  loss_sep: 0.0002 (0.0002)  loss_quan: 0.0503 (0.0503)  time: 1.2086  data: 0.9991  max mem: 3597
+2024-12-08 23:44:21,236 - log_every - INFO - Epoch: [199]  [11/12]  eta: 0:00:00  lr: 0.000010  loss_protop: 0.0288 (0.0291)  loss_feature: 3.6476 (3.6480)  loss_sep: 0.0001 (0.0001)  loss_quan: 0.0503 (0.0503)  time: 0.2893  data: 0.0833  max mem: 3597
+2024-12-08 23:44:21,318 - log_every - INFO - Epoch: [199] Total time: 0:00:03 (0.2962 s / it)
+2024-12-08 23:44:21,318 - evaluate - INFO - Start validation
+2024-12-08 23:44:21,318 - evaluate - INFO - Radius: 1
+2024-12-08 23:44:46,832 - evaluate - INFO - Evaluate V1: all_acc: 0.488 old_acc: 0.815 new_acc: 0.324
+2024-12-08 23:44:46,841 - evaluate - INFO - Evaluate V2: all_acc: 0.365 old_acc: 0.598 new_acc: 0.249
+2024-12-08 23:44:46,843 - main - INFO - Averaged stats:
+2024-12-08 23:44:46,843 - main - INFO - {'lr': 1.0022204783542081e-05, 'loss_protop': 0.029100799118168652, 'loss_feature': 3.6480411688486734, 'loss_sep': 0.00014973957938006302, 'loss_quan': 0.050290425618489586}
+2024-12-08 23:44:46,843 - main - INFO - Training time 1:38:04
