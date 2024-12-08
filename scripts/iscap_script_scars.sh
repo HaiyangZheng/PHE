@@ -8,7 +8,7 @@
 #SBATCH --gres=gpu:1        # 4 gpus per node out of 4
 #SBATCH --mem=100000          # memory per node out of 494000MB (481GB)
 #SBATCH --job-name=ocdscars
-#SBATCH -o /leonardo_work/IscrC_Fed-GCD/hyzheng/temp3/log/scars7.log
+#SBATCH -o /leonardo_work/IscrC_Fed-GCD/hyzheng/temp3/log/scars8.log
 
 module load cuda/12.1
 source /leonardo/home/userexternal/hzheng00/miniconda3/bin/activate fedgcd
@@ -21,6 +21,6 @@ output_dir=exp/
 
 python main.py \
     --data_set=$data_set \
-    --output_dir=$output_dir/$data_set/"scars_iscap_codelength(32)_seed($seed)" \
+    --output_dir=$output_dir/$data_set/"scars_iscap_codelength(64)_seed($seed)" \
     --seed=$seed \
-    --hash_code_length=32 \
+    --hash_code_length=64 \
