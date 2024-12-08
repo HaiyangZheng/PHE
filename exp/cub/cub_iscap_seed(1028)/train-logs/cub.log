@@ -1600,3 +1600,43 @@ Namespace(batch_size=128, img_size=224, prototype_shape=[2000, 192, 1, 1], proto
 2024-12-08 23:23:26,687 - log_every - INFO - Epoch: [159] Total time: 0:00:04 (0.3464 s / it)
 2024-12-08 23:23:26,688 - evaluate - INFO - Start validation
 2024-12-08 23:23:26,688 - evaluate - INFO - Radius: 1
+2024-12-08 23:23:53,782 - evaluate - INFO - Evaluate V1: all_acc: 0.494 old_acc: 0.821 new_acc: 0.331
+2024-12-08 23:23:53,792 - evaluate - INFO - Evaluate V2: all_acc: 0.365 old_acc: 0.596 new_acc: 0.250
+2024-12-08 23:23:53,792 - main - INFO - Averaged stats:
+2024-12-08 23:23:53,793 - main - INFO - {'lr': 1.9443024443093935e-05, 'loss_protop': 0.04584699341406425, 'loss_feature': 3.6483091513315835, 'loss_sep': 0.0002766927015424396, 'loss_quan': 0.052525838216145836}
+2024-12-08 23:23:53,793 - train_and_evaluate - INFO - Start train one epoch
+2024-12-08 23:23:54,949 - log_every - INFO - Epoch: [160]  [ 0/12]  eta: 0:00:13  lr: 0.000019  loss_protop: 0.0195 (0.0195)  loss_feature: 3.6477 (3.6477)  loss_sep: 0.0002 (0.0002)  loss_quan: 0.0523 (0.0523)  time: 1.1552  data: 0.9398  max mem: 3597
+2024-12-08 23:23:57,055 - log_every - INFO - Epoch: [160]  [11/12]  eta: 0:00:00  lr: 0.000019  loss_protop: 0.0394 (0.0421)  loss_feature: 3.6481 (3.6485)  loss_sep: 0.0003 (0.0003)  loss_quan: 0.0523 (0.0523)  time: 0.2718  data: 0.0784  max mem: 3597
+2024-12-08 23:23:57,131 - log_every - INFO - Epoch: [160] Total time: 0:00:03 (0.2782 s / it)
+2024-12-08 23:23:57,132 - evaluate - INFO - Start validation
+2024-12-08 23:23:57,132 - evaluate - INFO - Radius: 1
+2024-12-08 23:24:27,862 - evaluate - INFO - Evaluate V1: all_acc: 0.488 old_acc: 0.817 new_acc: 0.323
+2024-12-08 23:24:27,872 - evaluate - INFO - Evaluate V2: all_acc: 0.368 old_acc: 0.587 new_acc: 0.259
+2024-12-08 23:24:27,873 - main - INFO - Averaged stats:
+2024-12-08 23:24:27,873 - main - INFO - {'lr': 1.9014190368080923e-05, 'loss_protop': 0.042122030165046453, 'loss_feature': 3.648453692595164, 'loss_sep': 0.0003190104058982494, 'loss_quan': 0.0522918701171875}
+2024-12-08 23:24:27,874 - train_and_evaluate - INFO - Start train one epoch
+2024-12-08 23:24:29,059 - log_every - INFO - Epoch: [161]  [ 0/12]  eta: 0:00:14  lr: 0.000019  loss_protop: 0.0499 (0.0499)  loss_feature: 3.6488 (3.6488)  loss_sep: 0.0003 (0.0003)  loss_quan: 0.0521 (0.0521)  time: 1.1849  data: 0.9768  max mem: 3597
+2024-12-08 23:24:31,293 - log_every - INFO - Epoch: [161]  [11/12]  eta: 0:00:00  lr: 0.000019  loss_protop: 0.0325 (0.0396)  loss_feature: 3.6480 (3.6483)  loss_sep: 0.0003 (0.0003)  loss_quan: 0.0522 (0.0522)  time: 0.2848  data: 0.0814  max mem: 3597
+2024-12-08 23:24:31,368 - log_every - INFO - Epoch: [161] Total time: 0:00:03 (0.2912 s / it)
+2024-12-08 23:24:31,369 - evaluate - INFO - Start validation
+2024-12-08 23:24:31,369 - evaluate - INFO - Radius: 1
+2024-12-08 23:24:57,719 - evaluate - INFO - Evaluate V1: all_acc: 0.488 old_acc: 0.814 new_acc: 0.325
+2024-12-08 23:24:57,731 - evaluate - INFO - Evaluate V2: all_acc: 0.364 old_acc: 0.613 new_acc: 0.240
+2024-12-08 23:24:57,731 - main - INFO - Averaged stats:
+2024-12-08 23:24:57,731 - main - INFO - {'lr': 1.859423525312737e-05, 'loss_protop': 0.03958943299949169, 'loss_feature': 3.648306349913279, 'loss_sep': 0.0003417968643285955, 'loss_quan': 0.052195231119791664}
+2024-12-08 23:24:57,732 - train_and_evaluate - INFO - Start train one epoch
+2024-12-08 23:24:59,004 - log_every - INFO - Epoch: [162]  [ 0/12]  eta: 0:00:15  lr: 0.000018  loss_protop: 0.0648 (0.0648)  loss_feature: 3.6473 (3.6473)  loss_sep: 0.0006 (0.0006)  loss_quan: 0.0524 (0.0524)  time: 1.2715  data: 1.0660  max mem: 3597
+2024-12-08 23:25:01,391 - log_every - INFO - Epoch: [162]  [11/12]  eta: 0:00:00  lr: 0.000018  loss_protop: 0.0411 (0.0462)  loss_feature: 3.6477 (3.6478)  loss_sep: 0.0002 (0.0002)  loss_quan: 0.0524 (0.0523)  time: 0.3048  data: 0.0889  max mem: 3597
+2024-12-08 23:25:01,473 - log_every - INFO - Epoch: [162] Total time: 0:00:03 (0.3117 s / it)
+2024-12-08 23:25:01,473 - evaluate - INFO - Start validation
+2024-12-08 23:25:01,473 - evaluate - INFO - Radius: 1
+2024-12-08 23:25:28,007 - evaluate - INFO - Evaluate V1: all_acc: 0.490 old_acc: 0.817 new_acc: 0.326
+2024-12-08 23:25:28,016 - evaluate - INFO - Evaluate V2: all_acc: 0.368 old_acc: 0.594 new_acc: 0.255
+2024-12-08 23:25:28,017 - main - INFO - Averaged stats:
+2024-12-08 23:25:28,017 - main - INFO - {'lr': 1.818326271587395e-05, 'loss_protop': 0.04623380380993088, 'loss_feature': 3.6477986574172974, 'loss_sep': 0.00024414061772404239, 'loss_quan': 0.052340189615885414}
+2024-12-08 23:25:28,018 - train_and_evaluate - INFO - Start train one epoch
+2024-12-08 23:25:29,281 - log_every - INFO - Epoch: [163]  [ 0/12]  eta: 0:00:15  lr: 0.000018  loss_protop: 0.0577 (0.0577)  loss_feature: 3.6488 (3.6488)  loss_sep: 0.0004 (0.0004)  loss_quan: 0.0519 (0.0519)  time: 1.2623  data: 1.0539  max mem: 3597
+2024-12-08 23:25:31,589 - log_every - INFO - Epoch: [163]  [11/12]  eta: 0:00:00  lr: 0.000018  loss_protop: 0.0365 (0.0394)  loss_feature: 3.6483 (3.6482)  loss_sep: 0.0003 (0.0003)  loss_quan: 0.0520 (0.0520)  time: 0.2975  data: 0.0879  max mem: 3597
+2024-12-08 23:25:31,669 - log_every - INFO - Epoch: [163] Total time: 0:00:03 (0.3042 s / it)
+2024-12-08 23:25:31,669 - evaluate - INFO - Start validation
+2024-12-08 23:25:31,670 - evaluate - INFO - Radius: 1
