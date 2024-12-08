@@ -5,14 +5,14 @@ from torch.nn.init import trunc_normal_
 
 from vision_transformer import vit_base
 
-class Dropout(nn.Module):
+class PrototypeMask(nn.Module):
     def __init__(self, p=0.5):
-        super(Dropout, self).__init__()
+        super(PrototypeMask, self).__init__()
         self.p = p
         self.mask = None
 
     def forward(self, X):
-        if self.training:  # Only apply dropout during training
+        if self.training:
             self.mask = torch.bernoulli(torch.full_like(X, 1 - self.p))
             return X * self.mask
         else:
@@ -81,7 +81,7 @@ class PPNet_Normal(nn.Module):
         self.epsilon = 1e-4
 
         self.num_prototypes_global = self.num_classes * self.global_proto_per_class
-        # self.num_prototypes_global = self.num_classes
+
         self.prototype_shape_global = [self.num_prototypes_global] + [self.prototype_shape[1]]
 
         # prototype_activation_function could be 'log', 'linear',
@@ -94,7 +94,7 @@ class PPNet_Normal(nn.Module):
         prototypes for each class
         '''
         assert(self.num_prototypes % self.num_classes == 0)
-        # a onehot indication matrix for each prototype's class identity
+
         self.prototype_class_identity = torch.zeros(self.num_prototypes,
                                                     self.num_classes)
         self.prototype_class_identity_global = torch.zeros(self.num_prototypes_global,
@@ -109,10 +109,7 @@ class PPNet_Normal(nn.Module):
         for j in range(self.num_prototypes_global):
             self.prototype_class_identity_global[j, j // num_prototypes_per_class_global] = 1
 
-
-        # this has to be named features to allow the precise loading
         self.features = features
-
 
         first_add_on_layer_in_channels = [i for i in features.modules() if isinstance(i, nn.Linear)][-1].out_features
 
@@ -145,8 +142,6 @@ class PPNet_Normal(nn.Module):
             self.prototype_vectors_global = nn.Parameter(torch.rand(self.prototype_shape_global),
                                               requires_grad=True)
 
-        # do not make this just a tensor,
-        # since it will not be moved automatically to gpu
         self.ones = nn.Parameter(torch.ones(self.prototype_shape),
                                  requires_grad=False)
 
@@ -167,14 +162,11 @@ class PPNet_Normal(nn.Module):
 
         self.hash_head = HASHHead(in_dim=self.prototype_shape[1], code_dim=hash_code_length)
 
-        self.drop = Dropout(p=mask_theta)
+        self.prototypemask = PrototypeMask(p=mask_theta)
 
-        # 遍历 protopformer.features.blocks
-        # 首先关闭 self.protopformer.features 中所有参数的梯度
         for param in self.features.parameters():
             param.requires_grad = False
 
-        # 然后重新开启最后一个block的梯度
         for param in self.features.blocks[-1].parameters():
             param.requires_grad = True
 
@@ -281,7 +273,7 @@ class PPNet_Normal(nn.Module):
 
         global_activations, _ = self.get_activations(cls_tokens, self.prototype_vectors_global)
 
-        global_activations = self.drop(global_activations)
+        global_activations = self.prototypemask(global_activations)
 
         logits_global = self.last_layer_global(global_activations)
 

@@ -15,49 +15,11 @@ source /leonardo/home/userexternal/hzheng00/miniconda3/bin/activate fedgcd
 
 CUDA_VISIBLE_DEVICES=0
 
-# Training Config
-data_set=CD_CUB2011U
-use_global=True
-global_proto_per_class=10
-prototype_dim=768
-batch_size=128
+data_set=cub
 seed=1028
-
-# Learning Rate
-warmup_lr=1e-4
-warmup_epochs=5
-features_lr=1e-4
-add_on_layers_lr=1e-3
-prototype_vectors_lr=1e-3
-
-# Optimizer & Scheduler
-opt=adamw
-sched=cosine
-decay_epochs=10
-decay_rate=0.1
-weight_decay=0.05
-epochs=200
-output_dir=output_cosine/
-
+output_dir=exp/
 
 python main.py \
     --data_set=$data_set \
-    --output_dir=$output_dir/$data_set/"cub_iscap_seed(1028)" \
-    --batch_size=$batch_size \
-    --seed=1027 \
-    --opt=$opt \
-    --sched=$sched \
-    --warmup-epochs=$warmup_epochs \
-    --warmup-lr=$warmup_lr \
-    --decay-epochs=$decay_epochs \
-    --decay-rate=$decay_rate \
-    --weight_decay=$weight_decay \
-    --epochs=$epochs \
-    --features_lr=$features_lr \
-    --add_on_layers_lr=$add_on_layers_lr \
-    --prototype_vectors_lr=$prototype_vectors_lr \
-    --use_global=$use_global \
-    --global_proto_per_class=$global_proto_per_class \
-    --mask_theta=0.1 \
-    --hash_code_length=12 \
-    --prototype_dim=$prototype_dim \
+    --output_dir=$output_dir/$data_set/"cub_iscap_seed($seed)" \
+    --seed=$seed \
