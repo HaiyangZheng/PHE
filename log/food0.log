@@ -1,0 +1,129 @@
+2024-12-08 23:21:24,492 - main - INFO - Start running with args: 
+Namespace(batch_size=128, img_size=224, prototype_shape=[2000, 192, 1, 1], prototype_activation_function='log', add_on_layers_type='regular', use_global=True, global_proto_per_class=10, epochs=200, save_ep_freq=10, hash_code_length=12, prototype_dim=768, alpha=0.1, beta=3.0, model_ema=True, model_ema_decay=0.99996, model_ema_force_cpu=False, opt='adamw', opt_eps=1e-08, opt_betas=None, clip_grad=None, momentum=0.9, weight_decay=0.05, sched='cosine', features_lr=0.0001, add_on_layers_lr=0.001, prototype_vectors_lr=0.001, lr_noise=None, lr_noise_pct=0.67, lr_noise_std=1.0, warmup_lr=0.0001, min_lr=1e-05, decay_epochs=10, warmup_epochs=5, cooldown_epochs=10, patience_epochs=10, decay_rate=0.1, prop_train_labels=0.5, mask_theta=0.1, labeled_nums=0, unlabeled_nums=0, data_set='food', output_dir='exp//food/food_iscap_seed(1027)', device='cuda', seed=1027, resume='', start_epoch=0, eval=False, num_workers=10, pin_mem=True, data_root='/leonardo_work/IscrC_Fed-GCD/GCD_datasets', pretrain_path='/leonardo_work/IscrC_Fed-GCD/GCD_datasets/dino/dino_vitbase16_pretrain.pth')
+/leonardo/home/userexternal/hzheng00/miniconda3/envs/fedgcd/lib/python3.9/site-packages/torchvision/transforms/transforms.py:332: UserWarning: Argument 'interpolation' of type int is deprecated since 0.13 and will be removed in 0.15. Please use InterpolationMode enum.
+  warnings.warn(
+2024-12-08 23:21:30,139 - main - INFO - train 19125 test: 12750
+2024-12-08 23:21:30,139 - main - INFO - test_dataset_unlabelled: 56625
+/leonardo/home/userexternal/hzheng00/miniconda3/envs/fedgcd/lib/python3.9/site-packages/torch/utils/data/dataloader.py:563: UserWarning: This DataLoader will create 10 worker processes in total. Our suggested max number of worker in current system is 1, which is smaller than what this DataLoader is going to create. Please be aware that excessive worker creation might get DataLoader running slow or even freeze, lower the worker number to avoid potential slowness/freeze if necessary.
+  warnings.warn(_create_warning_msg(
+/leonardo/home/userexternal/hzheng00/miniconda3/envs/fedgcd/lib/python3.9/site-packages/torch/utils/data/dataloader.py:563: UserWarning: This DataLoader will create 8 worker processes in total. Our suggested max number of worker in current system is 1, which is smaller than what this DataLoader is going to create. Please be aware that excessive worker creation might get DataLoader running slow or even freeze, lower the worker number to avoid potential slowness/freeze if necessary.
+  warnings.warn(_create_warning_msg(
+2024-12-08 23:21:32,543 - main - INFO - number of params: 14369560
+2024-12-08 23:21:32,544 - main - INFO - Start training for 200 epochs
+2024-12-08 23:21:32,544 - train_and_evaluate - INFO - Start train one epoch
+require grad: prototype_vectors_global
+require grad: features.blocks.11.norm1.weight
+require grad: features.blocks.11.norm1.bias
+require grad: features.blocks.11.attn.qkv.weight
+require grad: features.blocks.11.attn.qkv.bias
+require grad: features.blocks.11.attn.proj.weight
+require grad: features.blocks.11.attn.proj.bias
+require grad: features.blocks.11.norm2.weight
+require grad: features.blocks.11.norm2.bias
+require grad: features.blocks.11.mlp.fc1.weight
+require grad: features.blocks.11.mlp.fc1.bias
+require grad: features.blocks.11.mlp.fc2.weight
+require grad: features.blocks.11.mlp.fc2.bias
+require grad: add_on_layers.0.weight
+require grad: add_on_layers.0.bias
+require grad: hash_head.mlp.0.weight
+require grad: hash_head.mlp.0.bias
+require grad: hash_head.mlp.2.weight
+require grad: hash_head.mlp.2.bias
+require grad: hash_head.mlp.4.weight
+require grad: hash_head.mlp.4.bias
+require grad: hash_head.mlp.5.weight
+require grad: hash_head.mlp.5.bias
+require grad: hash_head.hash.weight
+require grad: hash_head.bn_h.weight
+require grad: hash_head.bn_h.bias
+Param Group 0:
+Parameters:
+torch.Size([768])
+torch.Size([768])
+torch.Size([2304, 768])
+torch.Size([2304])
+torch.Size([768, 768])
+torch.Size([768])
+torch.Size([768])
+torch.Size([768])
+torch.Size([3072, 768])
+torch.Size([3072])
+torch.Size([768, 3072])
+torch.Size([768])
+Config:
+lr: 0.0001
+weight_decay: 0.001
+betas: (0.9, 0.999)
+eps: 1e-08
+amsgrad: False
+foreach: None
+maximize: False
+capturable: False
+
+
+Param Group 1:
+Parameters:
+torch.Size([768, 768])
+torch.Size([768])
+Config:
+lr: 0.001
+weight_decay: 0.001
+betas: (0.9, 0.999)
+eps: 1e-08
+amsgrad: False
+foreach: None
+maximize: False
+capturable: False
+
+
+Param Group 2:
+Parameters:
+torch.Size([2048, 768])
+torch.Size([2048])
+torch.Size([2048, 2048])
+torch.Size([2048])
+torch.Size([256, 2048])
+torch.Size([256])
+torch.Size([256])
+torch.Size([256])
+torch.Size([12, 256])
+torch.Size([12])
+torch.Size([12])
+Config:
+lr: 0.001
+betas: (0.9, 0.999)
+eps: 1e-08
+weight_decay: 0.05
+amsgrad: False
+foreach: None
+maximize: False
+capturable: False
+
+
+Param Group 3:
+Parameters:
+torch.Size([510, 768])
+Config:
+lr: 0.001
+betas: (0.9, 0.999)
+eps: 1e-08
+weight_decay: 0.05
+amsgrad: False
+foreach: None
+maximize: False
+capturable: False
+
+
+d_max: 3
+2024-12-08 23:21:57,524 - log_every - INFO - Epoch: [0]  [  0/150]  eta: 1:02:26  lr: 0.000100  loss_protop: 4.3081 (4.3081)  loss_feature: 3.9621 (3.9621)  loss_sep: 0.0000 (0.0000)  loss_quan: 0.5996 (0.5996)  time: 24.9791  data: 17.3432  max mem: 2686
+2024-12-08 23:22:09,407 - log_every - INFO - Epoch: [0]  [ 30/150]  eta: 0:02:22  lr: 0.000100  loss_protop: 4.2636 (4.2645)  loss_feature: 3.3818 (3.5085)  loss_sep: 0.0385 (0.0352)  loss_quan: 0.3174 (0.3689)  time: 0.4997  data: 0.2288  max mem: 2851
+2024-12-08 23:22:37,200 - log_every - INFO - Epoch: [0]  [ 60/150]  eta: 0:01:35  lr: 0.000100  loss_protop: 4.2359 (4.2569)  loss_feature: 3.2763 (3.3982)  loss_sep: 0.0089 (0.0236)  loss_quan: 0.2852 (0.3288)  time: 0.9398  data: 0.6571  max mem: 2851
+2024-12-08 23:23:05,533 - log_every - INFO - Epoch: [0]  [ 90/150]  eta: 0:01:01  lr: 0.000100  loss_protop: 4.1927 (4.2410)  loss_feature: 3.2242 (3.3440)  loss_sep: 0.0089 (0.0186)  loss_quan: 0.2786 (0.3128)  time: 0.9511  data: 0.6585  max mem: 2851
+2024-12-08 23:23:33,325 - log_every - INFO - Epoch: [0]  [120/150]  eta: 0:00:29  lr: 0.000100  loss_protop: 4.1996 (4.2273)  loss_feature: 3.2141 (3.3122)  loss_sep: 0.0041 (0.0158)  loss_quan: 0.2754 (0.3040)  time: 0.9317  data: 0.6561  max mem: 2851
+2024-12-08 23:23:58,266 - log_every - INFO - Epoch: [0]  [149/150]  eta: 0:00:00  lr: 0.000100  loss_protop: 4.1812 (4.2181)  loss_feature: 3.2073 (3.2918)  loss_sep: 0.0060 (0.0141)  loss_quan: 0.2664 (0.2973)  time: 0.7838  data: 0.5774  max mem: 2851
+2024-12-08 23:23:58,483 - log_every - INFO - Epoch: [0] Total time: 0:02:25 (0.9729 s / it)
+2024-12-08 23:23:58,483 - evaluate - INFO - Start validation
+2024-12-08 23:23:58,483 - evaluate - INFO - Radius: 1
+Averaged stats: lr: 0.000100  loss_protop: 4.1812 (4.2181)  loss_feature: 3.2073 (3.2918)  loss_sep: 0.0060 (0.0141)  loss_quan: 0.2664 (0.2973)
+  0%|          | 0/222 [00:00<?, ?it/s]  0%|          | 1/222 [00:15<58:03, 15.76s/it]  1%|          | 2/222 [00:16<25:47,  7.03s/it]  1%|▏         | 3/222 [00:17<15:27,  4.23s/it]  2%|▏         | 4/222 [00:18<10:34,  2.91s/it]  2%|▏         | 5/222 [00:19<07:56,  2.19s/it]  3%|▎         | 6/222 [00:20<06:22,  1.77s/it]  3%|▎         | 7/222 [00:21<05:22,  1.50s/it]  4%|▎         | 8/222 [00:22<04:40,  1.31s/it]  4%|▍         | 9/222 [00:30<12:32,  3.53s/it]  5%|▍         | 10/222 [00:31<09:35,  2.71s/it]  5%|▍         | 11/222 [00:32<07:39,  2.18s/it]  5%|▌         | 12/222 [00:33<06:10,  1.76s/it]  6%|▌         | 13/222 [00:34<05:16,  1.51s/it]  6%|▋         | 14/222 [00:35<04:34,  1.32s/it]  7%|▋         | 15/222 [00:35<04:06,  1.19s/it]  7%|▋         | 16/222 [00:36<03:46,  1.10s/it]  8%|▊         | 17/222 [00:44<10:33,  3.09s/it]  8%|▊         | 18/222 [00:45<08:12,  2.42s/it]  9%|▊         | 19/222 [00:46<06:41,  1.98s/it]  9%|▉         | 20/222 [00:47<05:29,  1.63s/it]  9%|▉         | 21/222 [00:48<04:42,  1.41s/it] 10%|▉         | 22/222 [00:49<04:16,  1.28s/it] 10%|█         | 23/222 [00:49<03:52,  1.17s/it] 11%|█         | 24/222 [00:50<03:32,  1.07s/it] 11%|█▏        | 25/222 [00:59<10:49,  3.29s/it] 12%|█▏        | 26/222 [01:00<08:23,  2.57s/it] 12%|█▏        | 27/222 [01:01<06:40,  2.05s/it] 13%|█▎        | 28/222 [01:01<05:33,  1.72s/it] 13%|█▎        | 29/222 [01:02<04:42,  1.47s/it] 14%|█▎        | 30/222 [01:03<04:09,  1.30s/it] 14%|█▍        | 31/222 [01:04<03:45,  1.18s/it] 14%|█▍        | 32/222 [01:05<03:32,  1.12s/it] 15%|█▍        | 33/222 [01:13<10:02,  3.19s/it] 15%|█▌        | 34/222 [01:14<07:46,  2.48s/it] 16%|█▌        | 35/222 [01:15<06:02,  1.94s/it] 16%|█▌        | 36/222 [01:16<05:04,  1.64s/it] 17%|█▋        | 37/222 [01:17<04:24,  1.43s/it] 17%|█▋        | 38/222 [01:17<03:52,  1.26s/it] 18%|█▊        | 39/222 [01:18<03:31,  1.16s/it] 18%|█▊        | 40/222 [01:19<03:11,  1.05s/it] 18%|█▊        | 41/222 [01:28<10:14,  3.39s/it] 19%|█▉        | 42/222 [01:29<07:59,  2.66s/it] 19%|█▉        | 43/222 [01:30<06:22,  2.14s/it] 20%|█▉        | 44/222 [01:31<05:14,  1.77s/it] 20%|██        | 45/222 [01:32<04:21,  1.48s/it] 21%|██        | 46/222 [01:32<03:43,  1.27s/it] 21%|██        | 47/222 [01:33<03:20,  1.14s/it] 22%|██▏       | 48/222 [01:34<03:07,  1.08s/it] 22%|██▏       | 49/222 [01:43<09:36,  3.33s/it] 23%|██▎       | 50/222 [01:44<07:23,  2.58s/it] 23%|██▎       | 51/222 [01:44<05:52,  2.06s/it] 23%|██▎       | 52/222 [01:45<04:51,  1.71s/it] 24%|██▍       | 53/222 [01:46<04:07,  1.46s/it] 24%|██▍       | 54/222 [01:47<03:37,  1.29s/it] 25%|██▍       | 55/222 [01:48<03:16,  1.17s/it] 25%|██▌       | 56/222 [01:49<02:57,  1.07s/it] 26%|██▌       | 57/222 [01:57<08:45,  3.18s/it] 26%|██▌       | 58/222 [01:58<06:50,  2.50s/it] 27%|██▋       | 59/222 [01:59<05:27,  2.01s/it] 27%|██▋       | 60/222 [02:00<04:32,  1.68s/it] 27%|██▋       | 61/222 [02:00<03:53,  1.45s/it] 28%|██▊       | 62/222 [02:01<03:22,  1.27s/it] 28%|██▊       | 63/222 [02:02<03:04,  1.16s/it] 29%|██▉       | 64/222 [02:03<02:51,  1.09s/it] 29%|██▉       | 65/222 [02:11<08:20,  3.19s/it] 30%|██▉       | 66/222 [02:12<06:29,  2.49s/it] 30%|███       | 67/222 [02:13<05:11,  2.01s/it] 31%|███       | 68/222 [02:14<04:17,  1.67s/it] 31%|███       | 69/222 [02:15<03:34,  1.40s/it] 32%|███▏      | 70/222 [02:16<03:09,  1.25s/it] 32%|███▏      | 71/222 [02:16<02:52,  1.14s/it] 32%|███▏      | 72/222 [02:17<02:38,  1.05s/it] 33%|███▎      | 73/222 [02:26<08:00,  3.23s/it] 33%|███▎      | 74/222 [02:27<06:15,  2.54s/it] 34%|███▍      | 75/222 [02:27<05:00,  2.05s/it] 34%|███▍      | 76/222 [02:28<04:09,  1.71s/it] 35%|███▍      | 77/222 [02:29<03:33,  1.47s/it] 35%|███▌      | 78/222 [02:30<03:05,  1.29s/it] 36%|███▌      | 79/222 [02:31<02:49,  1.19s/it] 36%|███▌      | 80/222 [02:32<02:36,  1.10s/it] 36%|███▋      | 81/222 [02:40<07:42,  3.28s/it] 37%|███▋      | 82/222 [02:41<05:59,  2.57s/it] 37%|███▋      | 83/222 [02:42<04:48,  2.07s/it] 38%|███▊      | 84/222 [02:43<03:57,  1.72s/it] 38%|███▊      | 85/222 [02:44<03:23,  1.49s/it] 39%|███▊      | 86/222 [02:45<03:00,  1.33s/it] 39%|███▉      | 87/222 [02:46<02:42,  1.20s/it] 40%|███▉      | 88/222 [02:47<02:28,  1.11s/it]

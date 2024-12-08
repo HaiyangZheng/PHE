@@ -1,0 +1,16 @@
+2024-12-08 23:21:24,492 - main - INFO - Start running with args: 
+Namespace(batch_size=128, img_size=224, prototype_shape=[2000, 192, 1, 1], prototype_activation_function='log', add_on_layers_type='regular', use_global=True, global_proto_per_class=10, epochs=200, save_ep_freq=10, hash_code_length=12, prototype_dim=768, alpha=0.1, beta=3.0, model_ema=True, model_ema_decay=0.99996, model_ema_force_cpu=False, opt='adamw', opt_eps=1e-08, opt_betas=None, clip_grad=None, momentum=0.9, weight_decay=0.05, sched='cosine', features_lr=0.0001, add_on_layers_lr=0.001, prototype_vectors_lr=0.001, lr_noise=None, lr_noise_pct=0.67, lr_noise_std=1.0, warmup_lr=0.0001, min_lr=1e-05, decay_epochs=10, warmup_epochs=5, cooldown_epochs=10, patience_epochs=10, decay_rate=0.1, prop_train_labels=0.5, mask_theta=0.1, labeled_nums=0, unlabeled_nums=0, data_set='food', output_dir='exp//food/food_iscap_seed(1027)', device='cuda', seed=1027, resume='', start_epoch=0, eval=False, num_workers=10, pin_mem=True, data_root='/leonardo_work/IscrC_Fed-GCD/GCD_datasets', pretrain_path='/leonardo_work/IscrC_Fed-GCD/GCD_datasets/dino/dino_vitbase16_pretrain.pth')
+2024-12-08 23:21:30,139 - main - INFO - train 19125 test: 12750
+2024-12-08 23:21:30,139 - main - INFO - test_dataset_unlabelled: 56625
+2024-12-08 23:21:32,543 - main - INFO - number of params: 14369560
+2024-12-08 23:21:32,544 - main - INFO - Start training for 200 epochs
+2024-12-08 23:21:32,544 - train_and_evaluate - INFO - Start train one epoch
+2024-12-08 23:21:57,524 - log_every - INFO - Epoch: [0]  [  0/150]  eta: 1:02:26  lr: 0.000100  loss_protop: 4.3081 (4.3081)  loss_feature: 3.9621 (3.9621)  loss_sep: 0.0000 (0.0000)  loss_quan: 0.5996 (0.5996)  time: 24.9791  data: 17.3432  max mem: 2686
+2024-12-08 23:22:09,407 - log_every - INFO - Epoch: [0]  [ 30/150]  eta: 0:02:22  lr: 0.000100  loss_protop: 4.2636 (4.2645)  loss_feature: 3.3818 (3.5085)  loss_sep: 0.0385 (0.0352)  loss_quan: 0.3174 (0.3689)  time: 0.4997  data: 0.2288  max mem: 2851
+2024-12-08 23:22:37,200 - log_every - INFO - Epoch: [0]  [ 60/150]  eta: 0:01:35  lr: 0.000100  loss_protop: 4.2359 (4.2569)  loss_feature: 3.2763 (3.3982)  loss_sep: 0.0089 (0.0236)  loss_quan: 0.2852 (0.3288)  time: 0.9398  data: 0.6571  max mem: 2851
+2024-12-08 23:23:05,533 - log_every - INFO - Epoch: [0]  [ 90/150]  eta: 0:01:01  lr: 0.000100  loss_protop: 4.1927 (4.2410)  loss_feature: 3.2242 (3.3440)  loss_sep: 0.0089 (0.0186)  loss_quan: 0.2786 (0.3128)  time: 0.9511  data: 0.6585  max mem: 2851
+2024-12-08 23:23:33,325 - log_every - INFO - Epoch: [0]  [120/150]  eta: 0:00:29  lr: 0.000100  loss_protop: 4.1996 (4.2273)  loss_feature: 3.2141 (3.3122)  loss_sep: 0.0041 (0.0158)  loss_quan: 0.2754 (0.3040)  time: 0.9317  data: 0.6561  max mem: 2851
+2024-12-08 23:23:58,266 - log_every - INFO - Epoch: [0]  [149/150]  eta: 0:00:00  lr: 0.000100  loss_protop: 4.1812 (4.2181)  loss_feature: 3.2073 (3.2918)  loss_sep: 0.0060 (0.0141)  loss_quan: 0.2664 (0.2973)  time: 0.7838  data: 0.5774  max mem: 2851
+2024-12-08 23:23:58,483 - log_every - INFO - Epoch: [0] Total time: 0:02:25 (0.9729 s / it)
+2024-12-08 23:23:58,483 - evaluate - INFO - Start validation
+2024-12-08 23:23:58,483 - evaluate - INFO - Radius: 1
