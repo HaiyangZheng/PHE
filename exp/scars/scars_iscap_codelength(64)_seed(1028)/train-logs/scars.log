@@ -1,0 +1,12 @@
+2024-12-08 23:50:18,745 - main - INFO - Start running with args: 
+Namespace(batch_size=128, img_size=224, prototype_shape=[2000, 192, 1, 1], prototype_activation_function='log', add_on_layers_type='regular', use_global=True, global_proto_per_class=10, epochs=200, save_ep_freq=10, hash_code_length=64, prototype_dim=768, alpha=0.1, beta=3.0, model_ema=True, model_ema_decay=0.99996, model_ema_force_cpu=False, opt='adamw', opt_eps=1e-08, opt_betas=None, clip_grad=None, momentum=0.9, weight_decay=0.05, sched='cosine', features_lr=0.0001, add_on_layers_lr=0.001, prototype_vectors_lr=0.001, lr_noise=None, lr_noise_pct=0.67, lr_noise_std=1.0, warmup_lr=0.0001, min_lr=1e-05, decay_epochs=10, warmup_epochs=5, cooldown_epochs=10, patience_epochs=10, decay_rate=0.1, prop_train_labels=0.5, mask_theta=0.1, labeled_nums=0, unlabeled_nums=0, data_set='scars', output_dir='exp//scars/scars_iscap_codelength(64)_seed(1028)', device='cuda', seed=1028, resume='', start_epoch=0, eval=False, num_workers=10, pin_mem=True, data_root='/leonardo_work/IscrC_Fed-GCD/GCD_datasets/stanford_cars', pretrain_path='/leonardo_work/IscrC_Fed-GCD/GCD_datasets/dino/dino_vitbase16_pretrain.pth')
+2024-12-08 23:50:19,064 - main - INFO - train 2000 test: 3948
+2024-12-08 23:50:19,064 - main - INFO - test_dataset_unlabelled: 6144
+2024-12-08 23:50:21,497 - main - INFO - number of params: 14743936
+2024-12-08 23:50:21,498 - main - INFO - Start training for 200 epochs
+2024-12-08 23:50:21,498 - train_and_evaluate - INFO - Start train one epoch
+2024-12-08 23:50:52,478 - log_every - INFO - Epoch: [0]  [ 0/16]  eta: 0:08:15  lr: 0.000100  loss_protop: 4.9980 (4.9980)  loss_feature: 4.5814 (4.5814)  loss_sep: 0.0000 (0.0000)  loss_quan: 0.6030 (0.6030)  time: 30.9788  data: 18.7396  max mem: 3396
+2024-12-08 23:50:54,163 - log_every - INFO - Epoch: [0]  [15/16]  eta: 0:00:02  lr: 0.000100  loss_protop: 4.8938 (4.9070)  loss_feature: 4.4090 (4.4180)  loss_sep: 0.0026 (0.0321)  loss_quan: 0.5386 (0.5475)  time: 2.0415  data: 1.1713  max mem: 3567
+2024-12-08 23:50:54,361 - log_every - INFO - Epoch: [0] Total time: 0:00:32 (2.0539 s / it)
+2024-12-08 23:50:54,361 - evaluate - INFO - Start validation
+2024-12-08 23:50:54,361 - evaluate - INFO - Radius: 12

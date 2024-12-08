@@ -1,0 +1,164 @@
+2024-12-08 23:46:14,322 - main - INFO - Start running with args: 
+Namespace(batch_size=128, img_size=224, prototype_shape=[2000, 192, 1, 1], prototype_activation_function='log', add_on_layers_type='regular', use_global=True, global_proto_per_class=10, epochs=200, save_ep_freq=10, hash_code_length=32, prototype_dim=768, alpha=0.1, beta=3.0, model_ema=True, model_ema_decay=0.99996, model_ema_force_cpu=False, opt='adamw', opt_eps=1e-08, opt_betas=None, clip_grad=None, momentum=0.9, weight_decay=0.05, sched='cosine', features_lr=0.0001, add_on_layers_lr=0.001, prototype_vectors_lr=0.001, lr_noise=None, lr_noise_pct=0.67, lr_noise_std=1.0, warmup_lr=0.0001, min_lr=1e-05, decay_epochs=10, warmup_epochs=5, cooldown_epochs=10, patience_epochs=10, decay_rate=0.1, prop_train_labels=0.5, mask_theta=0.1, labeled_nums=0, unlabeled_nums=0, data_set='scars', output_dir='exp//scars/scars_iscap_codelength(32)_seed(1027)', device='cuda', seed=1027, resume='', start_epoch=0, eval=False, num_workers=10, pin_mem=True, data_root='/leonardo_work/IscrC_Fed-GCD/GCD_datasets/stanford_cars', pretrain_path='/leonardo_work/IscrC_Fed-GCD/GCD_datasets/dino/dino_vitbase16_pretrain.pth')
+/leonardo/home/userexternal/hzheng00/miniconda3/envs/fedgcd/lib/python3.9/site-packages/torchvision/transforms/transforms.py:332: UserWarning: Argument 'interpolation' of type int is deprecated since 0.13 and will be removed in 0.15. Please use InterpolationMode enum.
+  warnings.warn(
+2024-12-08 23:46:14,714 - main - INFO - train 2000 test: 3948
+2024-12-08 23:46:14,715 - main - INFO - test_dataset_unlabelled: 6144
+/leonardo/home/userexternal/hzheng00/miniconda3/envs/fedgcd/lib/python3.9/site-packages/torch/utils/data/dataloader.py:563: UserWarning: This DataLoader will create 10 worker processes in total. Our suggested max number of worker in current system is 1, which is smaller than what this DataLoader is going to create. Please be aware that excessive worker creation might get DataLoader running slow or even freeze, lower the worker number to avoid potential slowness/freeze if necessary.
+  warnings.warn(_create_warning_msg(
+/leonardo/home/userexternal/hzheng00/miniconda3/envs/fedgcd/lib/python3.9/site-packages/torch/utils/data/dataloader.py:563: UserWarning: This DataLoader will create 8 worker processes in total. Our suggested max number of worker in current system is 1, which is smaller than what this DataLoader is going to create. Please be aware that excessive worker creation might get DataLoader running slow or even freeze, lower the worker number to avoid potential slowness/freeze if necessary.
+  warnings.warn(_create_warning_msg(
+2024-12-08 23:46:18,305 - main - INFO - number of params: 14735680
+2024-12-08 23:46:18,306 - main - INFO - Start training for 200 epochs
+2024-12-08 23:46:18,307 - train_and_evaluate - INFO - Start train one epoch
+train_classes: [1, 11, 25, 38, 46, 50, 53, 75, 84, 100, 105, 117, 123, 129, 133, 134, 135, 136, 137, 138, 140, 144, 145, 146, 147, 149, 150, 151, 153, 160, 161, 162, 163, 164, 167, 168, 169, 174, 175, 180, 185, 186, 187, 192, 193, 0, 81, 97, 104, 122, 139, 141, 142, 143, 148, 152, 154, 155, 156, 157, 158, 159, 165, 166, 170, 171, 172, 173, 176, 177, 181, 184, 188, 191, 194, 195, 2, 7, 9, 16, 20, 26, 28, 44, 54, 95, 98, 102, 127, 178, 182, 22, 41, 82, 93, 112, 125, 189]
+len(train_classes): 98
+unlabeled_classes: [23, 42, 83, 94, 113, 126, 190, 3, 8, 10, 17, 21, 27, 29, 45, 55, 96, 99, 103, 128, 179, 183, 4, 5, 6, 12, 13, 14, 15, 18, 19, 24, 30, 31, 32, 33, 34, 35, 36, 37, 39, 40, 43, 47, 48, 49, 51, 52, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 76, 77, 78, 79, 80, 85, 86, 87, 88, 89, 90, 91, 92, 101, 106, 107, 108, 109, 110, 111, 114, 115, 116, 118, 119, 120, 121, 124, 130, 131, 132]
+len(unlabeled_classes): 98
+require grad: prototype_vectors_global
+require grad: features.blocks.11.norm1.weight
+require grad: features.blocks.11.norm1.bias
+require grad: features.blocks.11.attn.qkv.weight
+require grad: features.blocks.11.attn.qkv.bias
+require grad: features.blocks.11.attn.proj.weight
+require grad: features.blocks.11.attn.proj.bias
+require grad: features.blocks.11.norm2.weight
+require grad: features.blocks.11.norm2.bias
+require grad: features.blocks.11.mlp.fc1.weight
+require grad: features.blocks.11.mlp.fc1.bias
+require grad: features.blocks.11.mlp.fc2.weight
+require grad: features.blocks.11.mlp.fc2.bias
+require grad: add_on_layers.0.weight
+require grad: add_on_layers.0.bias
+require grad: hash_head.mlp.0.weight
+require grad: hash_head.mlp.0.bias
+require grad: hash_head.mlp.2.weight
+require grad: hash_head.mlp.2.bias
+require grad: hash_head.mlp.4.weight
+require grad: hash_head.mlp.4.bias
+require grad: hash_head.mlp.5.weight
+require grad: hash_head.mlp.5.bias
+require grad: hash_head.hash.weight
+require grad: hash_head.bn_h.weight
+require grad: hash_head.bn_h.bias
+Param Group 0:
+Parameters:
+torch.Size([768])
+torch.Size([768])
+torch.Size([2304, 768])
+torch.Size([2304])
+torch.Size([768, 768])
+torch.Size([768])
+torch.Size([768])
+torch.Size([768])
+torch.Size([3072, 768])
+torch.Size([3072])
+torch.Size([768, 3072])
+torch.Size([768])
+Config:
+lr: 0.0001
+weight_decay: 0.001
+betas: (0.9, 0.999)
+eps: 1e-08
+amsgrad: False
+foreach: None
+maximize: False
+capturable: False
+
+
+Param Group 1:
+Parameters:
+torch.Size([768, 768])
+torch.Size([768])
+Config:
+lr: 0.001
+weight_decay: 0.001
+betas: (0.9, 0.999)
+eps: 1e-08
+amsgrad: False
+foreach: None
+maximize: False
+capturable: False
+
+
+Param Group 2:
+Parameters:
+torch.Size([2048, 768])
+torch.Size([2048])
+torch.Size([2048, 2048])
+torch.Size([2048])
+torch.Size([256, 2048])
+torch.Size([256])
+torch.Size([256])
+torch.Size([256])
+torch.Size([32, 256])
+torch.Size([32])
+torch.Size([32])
+Config:
+lr: 0.001
+betas: (0.9, 0.999)
+eps: 1e-08
+weight_decay: 0.05
+amsgrad: False
+foreach: None
+maximize: False
+capturable: False
+
+
+Param Group 3:
+Parameters:
+torch.Size([980, 768])
+Config:
+lr: 0.001
+betas: (0.9, 0.999)
+eps: 1e-08
+weight_decay: 0.05
+amsgrad: False
+foreach: None
+maximize: False
+capturable: False
+
+
+d_max: 10
+2024-12-08 23:46:49,411 - log_every - INFO - Epoch: [0]  [ 0/16]  eta: 0:08:17  lr: 0.000100  loss_protop: 4.9607 (4.9607)  loss_feature: 4.5823 (4.5823)  loss_sep: 0.0000 (0.0000)  loss_quan: 0.6138 (0.6138)  time: 31.1037  data: 19.3397  max mem: 3396
+2024-12-08 23:46:51,095 - log_every - INFO - Epoch: [0]  [15/16]  eta: 0:00:02  lr: 0.000100  loss_protop: 4.9213 (4.9469)  loss_feature: 4.3354 (4.3713)  loss_sep: 0.0000 (0.0293)  loss_quan: 0.5049 (0.5194)  time: 2.0492  data: 1.2088  max mem: 3567
+2024-12-08 23:46:51,286 - log_every - INFO - Epoch: [0] Total time: 0:00:32 (2.0612 s / it)
+2024-12-08 23:46:51,286 - evaluate - INFO - Start validation
+2024-12-08 23:46:51,286 - evaluate - INFO - Radius: 5
+Averaged stats: lr: 0.000100  loss_protop: 4.9213 (4.9469)  loss_feature: 4.3354 (4.3713)  loss_sep: 0.0000 (0.0293)  loss_quan: 0.5049 (0.5194)
+  0%|          | 0/24 [00:00<?, ?it/s]  4%|▍         | 1/24 [00:24<09:31, 24.85s/it]  8%|▊         | 2/24 [00:25<03:56, 10.74s/it] 12%|█▎        | 3/24 [00:26<02:11,  6.24s/it] 17%|█▋        | 4/24 [00:27<01:22,  4.12s/it] 21%|██        | 5/24 [00:28<00:56,  2.96s/it] 25%|██▌       | 6/24 [00:29<00:40,  2.25s/it] 29%|██▉       | 7/24 [00:30<00:30,  1.79s/it] 33%|███▎      | 8/24 [00:30<00:24,  1.50s/it] 38%|███▊      | 9/24 [00:51<01:52,  7.49s/it] 42%|████▏     | 10/24 [00:52<01:16,  5.45s/it] 46%|████▌     | 11/24 [00:53<00:52,  4.06s/it] 50%|█████     | 12/24 [00:54<00:37,  3.11s/it] 54%|█████▍    | 13/24 [00:55<00:26,  2.44s/it] 58%|█████▊    | 14/24 [00:56<00:19,  1.97s/it] 62%|██████▎   | 15/24 [00:57<00:14,  1.65s/it] 67%|██████▋   | 16/24 [00:57<00:11,  1.41s/it] 71%|███████   | 17/24 [01:09<00:31,  4.47s/it] 75%|███████▌  | 18/24 [01:10<00:19,  3.29s/it] 79%|███████▉  | 19/24 [01:10<00:12,  2.47s/it] 83%|████████▎ | 20/24 [01:11<00:07,  1.90s/it] 88%|████████▊ | 21/24 [01:11<00:04,  1.49s/it] 92%|█████████▏| 22/24 [01:12<00:02,  1.21s/it] 96%|█████████▌| 23/24 [01:12<00:01,  1.01s/it]100%|██████████| 24/24 [01:13<00:00,  1.14it/s]100%|██████████| 24/24 [01:13<00:00,  3.07s/it]
+2024-12-08 23:48:09,038 - evaluate - INFO - test len(list(set(preds1))): 361 len(preds): 6144
+2024-12-08 23:48:09,038 - evaluate - INFO - Evaluate V1: all_acc: 0.109 old_acc: 0.131 new_acc: 0.098
+2024-12-08 23:48:09,048 - evaluate - INFO - Evaluate V2: all_acc: 0.085 old_acc: 0.068 new_acc: 0.093
+2024-12-08 23:48:09,050 - main - INFO - Averaged stats:
+2024-12-08 23:48:09,050 - main - INFO - {'lr': 0.00010000000000000003, 'loss_protop': 4.94691202044487, 'loss_feature': 4.371309667825699, 'loss_sep': 0.029266978963278234, 'loss_quan': 0.5193939208984375}
+2024-12-08 23:48:09,051 - train_and_evaluate - INFO - Start train one epoch
+d_max: 10
+2024-12-08 23:48:23,942 - log_every - INFO - Epoch: [1]  [ 0/16]  eta: 0:03:58  lr: 0.000100  loss_protop: 4.7983 (4.7983)  loss_feature: 4.0952 (4.0952)  loss_sep: 0.0686 (0.0686)  loss_quan: 0.4370 (0.4370)  time: 14.8907  data: 14.6076  max mem: 3567
+2024-12-08 23:48:35,705 - log_every - INFO - Epoch: [1]  [15/16]  eta: 0:00:01  lr: 0.000100  loss_protop: 4.8590 (4.8811)  loss_feature: 4.0279 (4.0261)  loss_sep: 0.0182 (0.0373)  loss_quan: 0.4211 (0.4230)  time: 1.6658  data: 1.4884  max mem: 3567
+2024-12-08 23:48:36,076 - log_every - INFO - Epoch: [1] Total time: 0:00:27 (1.6890 s / it)
+2024-12-08 23:48:36,076 - evaluate - INFO - Start validation
+2024-12-08 23:48:36,076 - evaluate - INFO - Radius: 5
+Averaged stats: lr: 0.000100  loss_protop: 4.8590 (4.8811)  loss_feature: 4.0279 (4.0261)  loss_sep: 0.0182 (0.0373)  loss_quan: 0.4211 (0.4230)
+  0%|          | 0/24 [00:00<?, ?it/s]  4%|▍         | 1/24 [00:24<09:34, 24.98s/it]  8%|▊         | 2/24 [00:25<03:57, 10.79s/it] 12%|█▎        | 3/24 [00:26<02:11,  6.27s/it] 17%|█▋        | 4/24 [00:27<01:23,  4.16s/it] 21%|██        | 5/24 [00:28<00:56,  2.98s/it] 25%|██▌       | 6/24 [00:29<00:40,  2.26s/it] 29%|██▉       | 7/24 [00:30<00:31,  1.83s/it] 33%|███▎      | 8/24 [00:31<00:24,  1.53s/it] 38%|███▊      | 9/24 [00:51<01:52,  7.52s/it] 42%|████▏     | 10/24 [00:52<01:16,  5.48s/it] 46%|████▌     | 11/24 [00:53<00:53,  4.08s/it] 50%|█████     | 12/24 [00:54<00:37,  3.11s/it] 54%|█████▍    | 13/24 [00:55<00:26,  2.44s/it] 58%|█████▊    | 14/24 [00:56<00:19,  1.98s/it] 62%|██████▎   | 15/24 [00:57<00:14,  1.66s/it] 67%|██████▋   | 16/24 [00:58<00:11,  1.43s/it] 71%|███████   | 17/24 [01:09<00:29,  4.24s/it] 75%|███████▌  | 18/24 [01:09<00:18,  3.13s/it] 79%|███████▉  | 19/24 [01:10<00:11,  2.36s/it] 83%|████████▎ | 20/24 [01:10<00:07,  1.81s/it] 88%|████████▊ | 21/24 [01:11<00:04,  1.44s/it] 92%|█████████▏| 22/24 [01:11<00:02,  1.17s/it] 96%|█████████▌| 23/24 [01:12<00:00,  1.01it/s]100%|██████████| 24/24 [01:12<00:00,  1.16it/s]100%|██████████| 24/24 [01:13<00:00,  3.05s/it]
+2024-12-08 23:49:54,021 - evaluate - INFO - test len(list(set(preds1))): 411 len(preds): 6144
+2024-12-08 23:49:54,022 - evaluate - INFO - Evaluate V1: all_acc: 0.143 old_acc: 0.174 new_acc: 0.128
+2024-12-08 23:49:54,033 - evaluate - INFO - Evaluate V2: all_acc: 0.111 old_acc: 0.107 new_acc: 0.114
+2024-12-08 23:49:54,035 - main - INFO - Averaged stats:
+2024-12-08 23:49:54,035 - main - INFO - {'lr': 0.00010000000000000003, 'loss_protop': 4.881147474050522, 'loss_feature': 4.026094242930412, 'loss_sep': 0.03730867261765525, 'loss_quan': 0.423004150390625}
+2024-12-08 23:49:54,036 - train_and_evaluate - INFO - Start train one epoch
+d_max: 10
+2024-12-08 23:50:11,424 - log_every - INFO - Epoch: [2]  [ 0/16]  eta: 0:04:38  lr: 0.000100  loss_protop: 4.9452 (4.9452)  loss_feature: 3.9325 (3.9325)  loss_sep: 0.0214 (0.0214)  loss_quan: 0.4163 (0.4163)  time: 17.3875  data: 17.1749  max mem: 3567
+2024-12-08 23:50:20,859 - log_every - INFO - Epoch: [2]  [15/16]  eta: 0:00:01  lr: 0.000100  loss_protop: 4.9109 (4.8834)  loss_feature: 3.9110 (3.9121)  loss_sep: 0.0306 (0.0373)  loss_quan: 0.4160 (0.4163)  time: 1.6763  data: 1.4998  max mem: 3567
+2024-12-08 23:50:21,267 - log_every - INFO - Epoch: [2] Total time: 0:00:27 (1.7019 s / it)
+2024-12-08 23:50:21,267 - evaluate - INFO - Start validation
+2024-12-08 23:50:21,267 - evaluate - INFO - Radius: 5
+Averaged stats: lr: 0.000100  loss_protop: 4.9109 (4.8834)  loss_feature: 3.9110 (3.9121)  loss_sep: 0.0306 (0.0373)  loss_quan: 0.4160 (0.4163)
+  0%|          | 0/24 [00:00<?, ?it/s]  4%|▍         | 1/24 [00:24<09:33, 24.96s/it]  8%|▊         | 2/24 [00:25<03:57, 10.81s/it] 12%|█▎        | 3/24 [00:26<02:12,  6.29s/it] 17%|█▋        | 4/24 [00:27<01:23,  4.17s/it] 21%|██        | 5/24 [00:28<00:56,  2.99s/it] 25%|██▌       | 6/24 [00:29<00:41,  2.28s/it] 29%|██▉       | 7/24 [00:30<00:31,  1.83s/it] 33%|███▎      | 8/24 [00:31<00:24,  1.55s/it] 38%|███▊      | 9/24 [00:52<01:53,  7.54s/it] 42%|████▏     | 10/24 [00:53<01:17,  5.50s/it] 46%|████▌     | 11/24 [00:53<00:53,  4.09s/it] 50%|█████     | 12/24 [00:54<00:37,  3.13s/it] 54%|█████▍    | 13/24 [00:55<00:26,  2.45s/it] 58%|█████▊    | 14/24 [00:56<00:19,  1.99s/it] 62%|██████▎   | 15/24 [00:57<00:15,  1.68s/it] 67%|██████▋   | 16/24 [00:58<00:11,  1.45s/it] 71%|███████   | 17/24 [01:09<00:29,  4.20s/it] 75%|███████▌  | 18/24 [01:09<00:18,  3.11s/it] 79%|███████▉  | 19/24 [01:10<00:11,  2.34s/it] 83%|████████▎ | 20/24 [01:10<00:07,  1.80s/it] 88%|████████▊ | 21/24 [01:11<00:04,  1.43s/it] 92%|█████████▏| 22/24 [01:11<00:02,  1.17s/it] 96%|█████████▌| 23/24 [01:12<00:00,  1.01it/s]100%|██████████| 24/24 [01:13<00:00,  1.17it/s]100%|██████████| 24/24 [01:13<00:00,  3.06s/it]
+2024-12-08 23:51:38,643 - evaluate - INFO - test len(list(set(preds1))): 313 len(preds): 6144
+2024-12-08 23:51:38,643 - evaluate - INFO - Evaluate V1: all_acc: 0.165 old_acc: 0.205 new_acc: 0.145
+2024-12-08 23:51:38,652 - evaluate - INFO - Evaluate V2: all_acc: 0.128 old_acc: 0.123 new_acc: 0.131
+2024-12-08 23:51:38,654 - main - INFO - Averaged stats:
+2024-12-08 23:51:38,654 - main - INFO - {'lr': 0.00010000000000000003, 'loss_protop': 4.883422821760178, 'loss_feature': 3.912097930908203, 'loss_sep': 0.03730867255944759, 'loss_quan': 0.4163055419921875}
+2024-12-08 23:51:38,655 - train_and_evaluate - INFO - Start train one epoch
+d_max: 10
