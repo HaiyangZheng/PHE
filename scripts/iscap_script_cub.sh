@@ -21,5 +21,6 @@ output_dir=exp/
 
 python main.py \
     --data_set=$data_set \
-    --output_dir=$output_dir/$data_set/"cub_iscap_seed($seed)_iscap" \
+    --output_dir=$output_dir/$data_set/"cub_iscap_codelength(16)_seed($seed)" \
     --seed=$seed \
+    --hash_code_length=16 \
