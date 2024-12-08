@@ -182,6 +182,7 @@ def evaluate(test_loader, model, args, centers, dis_max):
     preds1 = np.array(preds1)
 
     all_acc, old_acc, new_acc = split_cluster_acc_v1(y_true=targets, y_pred=preds1, mask=mask)
+    logger.info(f'test len(list(set(preds1))): {len(list(set(preds1)))} len(preds): {len(preds1)}')
     logger.info(f"Evaluate V1: all_acc: {all_acc:.3f} old_acc: {old_acc:.3f} new_acc: {new_acc:.3f}")
 
     all_acc, old_acc, new_acc = split_cluster_acc_v2(y_true=targets, y_pred=preds1, mask=mask)
