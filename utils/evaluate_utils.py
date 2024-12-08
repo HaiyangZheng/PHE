@@ -105,13 +105,13 @@ def binomial_coefficient(n, k):
 def get_dis_max(args):
     Y_U, L = args.unlabeled_nums, args.hash_code_length
     target = (2 ** L) / Y_U
-    print(f"target = {target}")
 
     for d in range(2, L + 1):
         lower_sum = binomial_coefficient(L, d - 2)
         upper_sum = binomial_coefficient(L, d - 1)
 
         if lower_sum <= target <= upper_sum:
+            print("d_max:", d)
             return d
 
     return 0

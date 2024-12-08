@@ -190,7 +190,7 @@ class MetricLogger(object):
             header, total_time_str, total_time / len(iterable)))
 
 
-def _load_checkpoint_for_ema(model_ema, checkpoint):
+def load_checkpoint_for_ema(model_ema, checkpoint):
     """
     Workaround for ModelEma._load_checkpoint to accept an already-loaded object
     """

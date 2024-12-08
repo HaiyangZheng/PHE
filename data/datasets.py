@@ -2,11 +2,11 @@ import pickle
 import torch
 
 from torchvision import transforms
-from datasets.cub import get_cub_datasets
-from datasets.scars import get_scars_datasets
-from datasets.food101 import get_food_101_datasets
-from datasets.pets import get_oxford_pets_datasets
-from datasets.inaturalist import get_inaturalist_datasets
+from data.cub import get_cub_datasets
+from data.scars import get_scars_datasets
+from data.food101 import get_food_101_datasets
+from data.pets import get_oxford_pets_datasets
+from data.inaturalist import get_inaturalist_datasets
 
 from copy import deepcopy
 
@@ -34,7 +34,7 @@ def build_dataset(args):
 
     if args.data_set == 'cub':
 
-        split_path = 'ssb_splits/cub_osr_splits.pkl'
+        split_path = 'data/ssb_splits/cub_osr_splits.pkl'
         with open(split_path, 'rb') as handle:
             class_info = pickle.load(handle)
 
@@ -140,7 +140,7 @@ def build_dataset(args):
 
     elif args.data_set == 'scars':
 
-        split_path = 'ssb_splits/scars_osr_splits.pkl'
+        split_path = 'data/ssb_splits/scars_osr_splits.pkl'
         with open(split_path, 'rb') as handle:
             class_info = pickle.load(handle)
 

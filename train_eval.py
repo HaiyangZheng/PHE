@@ -124,6 +124,7 @@ def evaluate(test_loader, model, args, centers, dis_max):
     radius = max(math.floor(dis_max / 2), 1)
     logger = logging.getLogger("validate")
     logger.info("Start validation")
+    logger.info(f"Radius: {radius}")
 
     metric_logger = MetricLogger(delimiter="  ")
 

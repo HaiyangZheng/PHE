@@ -11,8 +11,8 @@ from pathlib import Path
 from timm.utils import NativeScaler, ModelEma
 from phe_model import construct_PPNet_dino
 from train_eval import train_and_evaluate
-from datasets.datasets import build_dataset
-from utils import create_optimizer, create_scheduler, get_logger, _load_checkpoint_for_ema, str2bool
+from data.datasets import build_dataset
+from utils import create_optimizer, create_scheduler, get_logger, load_checkpoint_for_ema, str2bool
 
 from config import pretrain_path, oxford_pet_root, cub_root, car_root, food_101_root, inaturalist_root
 
@@ -242,7 +242,7 @@ def main(args):
             lr_scheduler.load_state_dict(checkpoint['lr_scheduler'])
             args.start_epoch = checkpoint['epoch'] + 1
             if args.model_ema:
-                _load_checkpoint_for_ema(model_ema, checkpoint['model_ema'])
+                load_checkpoint_for_ema(model_ema, checkpoint['model_ema'])
             if 'scaler' in checkpoint:
                 loss_scaler.load_state_dict(checkpoint['scaler'])
 
