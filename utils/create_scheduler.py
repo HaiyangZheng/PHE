@@ -33,5 +33,5 @@ def create_scheduler(args, optimizer):
         num_epochs = lr_scheduler.get_cycle_length() + args.cooldown_epochs
     elif args.sched == 'step':
         lr_scheduler = optim.lr_scheduler.StepLR(optimizer, step_size=args.decay_epochs, gamma=args.decay_rate)
-    #
+    
     return lr_scheduler, num_epochs
