@@ -227,7 +227,7 @@ class PPNet_Normal(nn.Module):
 
     def get_activations(self, tokens, prototype_vectors):
 
-        ## distance 
+        # distance 
         tokens_expanded = F.normalize(tokens, dim=-1)
         prototype_vectors_expanded = F.normalize(prototype_vectors, dim=-1)
         # print("tokens_expanded.shape", tokens_expanded.shape)
