@@ -4,7 +4,6 @@
 <p align="center">
     <a href="https://neurips.cc/virtual/2024/poster/93382"><img src="https://img.shields.io/badge/NeurIPS%202024-red"></a>
     <a href="https://arxiv.org/abs/2410.19213"><img src="https://img.shields.io/badge/arXiv-2410.19213-red"></a>
-  <a href="https://github.com/CVMI-Lab/SlotCon/blob/master/LICENSE"><img src="https://img.shields.io/badge/License-MIT-blue.svg"></a>
 </p>
 <p align="center">
 	Prototypical Hash Encoding for On-the-Fly Fine-Grained Category Discovery<br>
